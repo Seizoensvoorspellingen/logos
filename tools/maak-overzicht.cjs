@@ -13,23 +13,22 @@ function leesCsv(bestand) {
 const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const LANDNAAM = Object.fromEntries(Object.values(require("./landen.cjs")).map((l) => [l.nl.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-"), l.nl]));
 const titel = (s) => s.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
-const KOPPELING = { handmatig: "koppeling met de hand gezet", nagekeken: "koppeling nagekeken" };
 const vergelijk = (a, b) => a.localeCompare(b, "nl", { sensitivity: "base" });
 
 const landen = fs.readdirSync(path.join(ROOT, "competities")).map((map) => ({ map, naam: LANDNAAM[map] || titel(map) })).sort((a, b) => vergelijk(a.naam, b.naam));
 let totaal = 0, metLogo = 0;
 const delen = landen.map(({ map, naam }) => {
   const comps = fs.readdirSync(path.join(ROOT, "competities", map)).filter((f) => f.endsWith(".csv"));
-  return `<section data-land="${esc(map)}"><h2>${esc(naam)}</h2>${comps.map((c) => {
+  return `<section data-land="${esc(map)}"><details open><summary><h2>${esc(naam)}</h2></summary>${comps.map((c) => {
     const rijen = leesCsv(path.join(ROOT, "competities", map, c)).sort((a, b) => vergelijk(a.naam, b.naam));
     totaal += rijen.length;
     metLogo += rijen.filter((r) => r.logo).length;
     return `<div class="comp"><h3>${esc(titel(c.replace(".csv", "")))} <small>(${rijen.length})</small></h3><ul>${rijen.map((r) => {
       const bron = r.eigen_logo ? `eigen logo van <a href="${esc(r.eigen_pagina || r.eigen_logo)}">${esc(new URL(r.eigen_pagina || r.eigen_logo).hostname.replace(/^www./, ""))}</a>` : r.football_logos ? `<a href="https://football-logos.cc/${esc(r.football_logos)}/">${esc(r.fl_naam || r.football_logos)}</a>` : "geen logo gevonden";
       const zoek = [r.naam, r.fotmob_naam, r.fl_naam, naam].join(" ").toLowerCase();
-      return `<li data-zoek="${esc(zoek)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>FotMob ${esc(r.fotmob_id)} · ${bron}${KOPPELING[r.zekerheid] ? ` · ${KOPPELING[r.zekerheid]}` : ""}</small></span></li>`;
+      return `<li data-zoek="${esc(zoek)}" data-koppeling="${esc(r.zekerheid)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>FotMob ${esc(r.fotmob_id)} · ${bron}</small></span></li>`;
     }).join("")}</ul></div>`;
-  }).join("")}</section>`;
+  }).join("")}</details></section>`;
 });
 
 const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logobank</title>
@@ -37,7 +36,7 @@ const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta n
 :root{color-scheme:light dark;--bg:#fff;--ink:#1a1a1a;--muted:#666;--line:#e3e3e3;--card:#f7f7f7}
 @media (prefers-color-scheme:dark){:root{--bg:#141414;--ink:#eee;--muted:#aaa;--line:#333;--card:#1e1e1e}}
 body{margin:0;padding:16px;font:15px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--ink);max-width:1100px;margin-inline:auto}
-h1{margin:0 0 4px}h2{margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px}h3{margin:14px 0 6px;font-size:15px}small{color:var(--muted)}
+h1{margin:0 0 4px}h2{margin:0;display:inline;font-size:1.4em}summary{margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px;cursor:pointer;list-style-position:outside}summary::marker{font-size:1.1em}h3{margin:14px 0 6px;font-size:15px}small{color:var(--muted)}
 .balk{position:sticky;top:0;background:var(--bg);padding:10px 0;display:flex;gap:8px;flex-wrap:wrap;z-index:1;border-bottom:1px solid var(--line)}
 .landen{flex:1 1 260px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:4px 6px}.landen input{border:0;flex:1 1 120px;padding:4px;background:transparent}.chip{display:inline-flex;gap:4px;align-items:center;background:var(--line);border-radius:999px;padding:2px 4px 2px 10px}.chip button{border:0;background:transparent;color:inherit;cursor:pointer;font:inherit;padding:0 6px}
 .balk input,.balk select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}

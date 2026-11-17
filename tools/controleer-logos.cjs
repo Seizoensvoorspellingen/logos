@@ -4,7 +4,7 @@
 // Gebruik:
 //   node tools/controleer-logos.cjs            alleen melden (tmp/controle-verslag.json)
 //   node tools/controleer-logos.cjs --vul      lege logo_versie invullen zonder te melden (eerste keer)
-//   node tools/controleer-logos.cjs --bijwerken  gewijzigde logo's opnieuw ophalen; het oude logo gaat naar bron/archief/
+//   node tools/controleer-logos.cjs --bijwerken  gewijzigde logo's opnieuw ophalen (het oude logo blijft terug te vinden in de git-geschiedenis)
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -71,9 +71,6 @@ async function huidigeVersie(r) {
         const beeld = nu.beeld || (await haal(nu.url, "buffer"));
         if (!beeld) { verslag.mislukt.push(`${r.naam} (${sleutel})`); continue; }
         const uit = path.join(ROOT, "logos", r.fotmob_id + ".webp");
-        const archief = path.join(ROOT, "bron", "archief", `${r.fotmob_id}-${new Date().toISOString().slice(0, 10)}.webp`);
-        fs.mkdirSync(path.dirname(archief), { recursive: true });
-        if (fs.existsSync(uit)) fs.copyFileSync(uit, archief);
         await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ lossless: true, effort: 6 }).toFile(uit);
         r.logo_versie = nu.versie;
         verslag.bijgewerkt.push(r.naam);

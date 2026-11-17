@@ -1,8 +1,9 @@
 // Jaarlijkse update van de logobank (aan het begin van het seizoen, of vaker als je wilt).
-// 1. Per UEFA-land de hoogste divisie opnieuw ophalen bij FotMob en samenvoegen met wat er al staat:
+// 1. Per UEFA-land de hoogste divisie (en de competities in EXTRA) opnieuw ophalen bij FotMob en samenvoegen met wat er al staat:
 //    - een bekende club (zelfde fotmob_id) houdt zijn regel met alle gegevens (naam, koppeling, eigen logo, versie);
 //    - een nieuwe club komt erbij, met een automatische koppeling met football-logos.cc (tools/correcties.json gaat voor);
-//    - een club die niet meer in de hoogste divisie speelt, verhuist naar competities/<land>/overige-clubs.csv;
+//    - een club die niet meer in die competitie speelt, verhuist naar competities/<land>/overige-clubs.csv;
+//    - clubs in amateurclubs.csv en overige-clubs.csv blijven daar, tenzij ze in een opgehaalde competitie staan;
 //    - er wordt nooit een club weggegooid.
 // 2. Namencheck: verschilt de naam op FotMob of op football-logos.cc van vorig jaar, dan staat de club in het verslag
 //    (de kolom 'naam' blijft staan tot Kalle een nieuwe naam goedkeurt). Nieuwe clubs krijgen eerst de FotMob-naam.
@@ -19,6 +20,8 @@ const UA = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 const UA_FL = { "user-agent": "Mozilla/5.0 (voetbalpoule-logobank)" };
 const PAUZE_MS = 400;
 const OVERIG = "overige-clubs.csv";
+// Extra competities naast de hoogste divisie (UEFA-landcode → FotMob-competitie). De Eerste divisie hoort bij de poule (KNVB Beker).
+const EXTRA = [{ code: "NED", competitie: { id: 111, name: "Eerste Divisie" } }];
 const KOLOMMEN = ["naam", "fotmob_id", "fotmob_naam", "football_logos", "fl_naam", "zekerheid", "eigen_logo", "eigen_pagina", "logo", "logo_versie"];
 const droog = process.argv.includes("--droog");
 const wacht = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -84,6 +87,7 @@ function flClubs(html, land) {
   }
   const nieuwPerBestand = new Map([...perBestand.keys()].map((b) => [b, []]));
   const geplaatst = new Set();
+  const compBestanden = new Set();
   const verslag = { nieuw: [], verhuisd: [], naarOverig: [], fotmobNaam: [], flNaam: [], zonderLogo: [], zonderFotmob: [] };
 
   const sitemap = await haal("https://football-logos.cc/sitemap-0.xml", "tekst", UA_FL);
@@ -94,14 +98,15 @@ function flClubs(html, land) {
   const fotmob = await haal("https://www.fotmob.com/api/data/allLeagues", "json");
   const perCode = new Map(fotmob.countries.map((c) => [c.ccode, c]));
 
-  for (const code of codes) {
+  for (const [code, extra] of [...codes.map((c) => [c, null]), ...EXTRA.map((e) => [e.code, e.competitie])]) {
     const land = LANDEN[code];
     if (!land) throw new Error("Onbekend UEFA-land: " + code + " (voeg het toe aan tools/landen.cjs)");
     const map = path.join(ROOT, "competities", slugVan(land.nl));
     const fm = land.fotmob === null ? null : perCode.get(land.fotmob || code);
     if (!fm) { verslag.zonderFotmob.push(land.nl); continue; }
-    const comp = fm.leagues[0];
+    const comp = extra || fm.leagues[0];
     const bestand = path.join(map, slugVan(comp.name) + ".csv");
+    compBestanden.add(bestand);
     const teams = teamsUit(await haal(`https://www.fotmob.com/api/data/tltable?leagueId=${comp.id}`, "json"));
     await wacht(PAUZE_MS);
     let fl = null;
@@ -142,9 +147,11 @@ function flClubs(html, land) {
     }
   }
 
-  // Clubs die niet meer in een hoogste divisie staan: naar overige-clubs van hun land (of daar blijven).
+  // Clubs die niet meer in een opgehaalde competitie staan: naar overige-clubs van hun land.
+  // Clubs in een ander bestand (amateurclubs.csv, overige-clubs.csv) blijven waar ze staan.
   for (const [id, { r, bestand }] of bestaand) {
     if (geplaatst.has(id)) continue;
+    if (!compBestanden.has(bestand)) { nieuwPerBestand.get(bestand).push(r); continue; }
     const overig = path.join(path.dirname(bestand), OVERIG);
     if (path.basename(bestand) !== OVERIG) verslag.naarOverig.push({ naam: r.naam, van: path.relative(ROOT, bestand) });
     if (!nieuwPerBestand.has(overig)) nieuwPerBestand.set(overig, []);

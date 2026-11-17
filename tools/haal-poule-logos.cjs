@@ -1,6 +1,6 @@
 // De logo's van de poule die geen club zijn (bond, competities, toernooien, bekers, vlag): poule-logos.csv.
 // Kolommen: sleutel, naam, football_logos (land/slug, ook varianten als 'tournaments/uefa-champions-league--no-text'),
-// eigen_logo (link naar een bestand, gaat voor), eigen_pagina, logo, logo_versie.
+// eigen_logo (link naar een bestand of een pad in deze repo, gaat voor), eigen_pagina, logo, logo_versie.
 // Per logo: WebP lossless 384×384 in logos/poule/<sleutel>.webp, bron in bron/poule/<sleutel>.webp.
 // Gebruik: node tools/haal-poule-logos.cjs [--opnieuw]
 const fs = require("fs");
@@ -74,13 +74,14 @@ async function footballLogos(ref) {
     if (fs.existsSync(uit) && !opnieuw) { r.logo = path.relative(ROOT, uit).replace(/\\/g, "/"); continue; }
     let bron = null;
     if (r.eigen_logo) {
-      const beeld = await haal(r.eigen_logo, "buffer");
+      // Een eigen logo kan ook een bewerkt bestand in deze repo zijn (bijv. bron/poule/…png).
+      const beeld = /^https?:/.test(r.eigen_logo) ? await haal(r.eigen_logo, "buffer") : fs.readFileSync(path.join(ROOT, r.eigen_logo));
       if (beeld) bron = { beeld, versie: "sha256:" + crypto.createHash("sha256").update(beeld).digest("hex").slice(0, 16) };
     } else if (r.football_logos) bron = await footballLogos(r.football_logos);
     await wacht(400);
     if (!bron) { mislukt.push(r.sleutel); continue; }
     const svg = bron.beeld.slice(0, 200).toString().includes("<svg");
-    const invoer = () => sharp(bron.beeld, { limitInputPixels: false, ...(svg ? { density: 600 } : {}) });
+    const invoer = () => sharp(bron.beeld, { limitInputPixels: false, ...(svg ? { density: 200 } : {}) });
     fs.mkdirSync(path.join(ROOT, "bron", "poule"), { recursive: true });
     fs.mkdirSync(path.dirname(uit), { recursive: true });
     await invoer().webp({ lossless: true, effort: 6 }).toFile(path.join(ROOT, "bron", "poule", r.sleutel + ".webp"));

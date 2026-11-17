@@ -1,11 +1,11 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Otrant,187983,Otrant,,,handmatig,https://fscg.me/files/images_comet/Club/48012_-1631662978.png,logos/187983.webp,sha256:8c172dcb38e5264f
-Budućnost Podgorica,8627,Budućnost Podgorica,montenegro/buducnost-podgorica,Budućnost Podgorica,zeker,,logos/8627.webp,700:f0f49f87
-Mornar,175653,Mornar,montenegro/mornar,Mornar,zeker,,logos/175653.webp,700:cca49be8
-Sutjeska,2245,Sutjeska,montenegro/sutjeska,Sutjeska,zeker,,logos/2245.webp,700:89bf0a21
-Dečić Tuzi,8100,Dečić Tuzi,montenegro/decic,Dečić,nagekeken,,logos/8100.webp,700:57f7f566
-FK Bokelj,89512,FK Bokelj,montenegro/bokelj,Bokelj,zeker,,logos/89512.webp,700:1bce4606
-Jezero,141667,Jezero,montenegro/jezero,Jezero,zeker,,logos/141667.webp,700:49690a96
-Petrovac,8101,Petrovac,montenegro/petrovac,Petrovac,zeker,,logos/8101.webp,700:d0ece8b0
-OFK Mladost Donja Gorica,1264989,OFK Mladost Donja Gorica,,,handmatig,https://fscg.me/files/images_comet/Club/49984_1ba8d420-0420-4f72-998b-065d6aa56fdc.png,logos/1264989.webp,sha256:4c60cc81c4749a4e
-FK Arsenal Tivat,324771,FK Arsenal Tivat,montenegro/arsenal-tivat,Arsenal Tivat,zeker,,logos/324771.webp,700:525338e0
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Otrant,187983,Otrant,,,handmatig,https://fscg.me/files/images_comet/Club/48012_-1631662978.png,https://fscg.me/klubovi/otrant-olympic-48012/,logos/187983.webp,sha256:8c172dcb38e5264f
+Budućnost Podgorica,8627,Budućnost Podgorica,montenegro/buducnost-podgorica,Budućnost Podgorica,zeker,,,logos/8627.webp,700:f0f49f87
+Mornar,175653,Mornar,montenegro/mornar,Mornar,zeker,,,logos/175653.webp,700:cca49be8
+Sutjeska,2245,Sutjeska,montenegro/sutjeska,Sutjeska,zeker,,,logos/2245.webp,700:89bf0a21
+Dečić Tuzi,8100,Dečić Tuzi,montenegro/decic,Dečić,nagekeken,,,logos/8100.webp,700:57f7f566
+FK Bokelj,89512,FK Bokelj,montenegro/bokelj,Bokelj,zeker,,,logos/89512.webp,700:1bce4606
+Jezero,141667,Jezero,montenegro/jezero,Jezero,zeker,,,logos/141667.webp,700:49690a96
+Petrovac,8101,Petrovac,montenegro/petrovac,Petrovac,zeker,,,logos/8101.webp,700:d0ece8b0
+OFK Mladost Donja Gorica,1264989,OFK Mladost Donja Gorica,,,handmatig,https://fscg.me/files/images_comet/Club/49984_1ba8d420-0420-4f72-998b-065d6aa56fdc.png,https://fscg.me/klubovi/ofk-mladostlobbet-49984/,logos/1264989.webp,sha256:4c60cc81c4749a4e
+FK Arsenal Tivat,324771,FK Arsenal Tivat,montenegro/arsenal-tivat,Arsenal Tivat,zeker,,,logos/324771.webp,700:525338e0

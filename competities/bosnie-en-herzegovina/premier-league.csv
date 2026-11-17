@@ -1,11 +1,11 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Zrinjski Mostar,10107,Zrinjski Mostar,bosnia-and-herzegovina/zrinjski,Zrinjski Mostar,zeker,,logos/10107.webp,1500:14fe94bc
-FK Borac Banja Luka,10116,Borac Banja Luka,bosnia-and-herzegovina/borac,Borac Banja Luka,zeker,,logos/10116.webp,1500:c5a06044
-FK Sarajevo,10105,FK Sarajevo,bosnia-and-herzegovina/sarajevo,Sarajevo,zeker,,logos/10105.webp,1500:e7494cdb
-Široki Brijeg,10112,Široki Brijeg,bosnia-and-herzegovina/siroki-brijeg,Široki Brijeg,zeker,,logos/10112.webp,1500:7b2e3771
-BSK Banja Luka,187927,BSK Banja Luka,,,handmatig,https://fsrs.org/files/comet/grbovi/436.png,logos/187927.webp,sha256:a917e64deddaaf99
-Željezničar,10108,Željezničar,bosnia-and-herzegovina/zeljeznicar,Željezničar,zeker,,logos/10108.webp,1500:72ad4c3c
-FK Velež Mostar,10122,FK Velež Mostar,bosnia-and-herzegovina/velez,Velež Mostar,zeker,,logos/10122.webp,1500:45957b88
-Čelik Zenica,10109,Čelik Zenica,bosnia-and-herzegovina/celik,Čelik Zenica,zeker,,logos/10109.webp,1500:2e03cdfc
-Radnik Bijeljina,10124,Radnik Bijeljina,bosnia-and-herzegovina/radnik-bijeljina,Radnik Bijeljina,zeker,,logos/10124.webp,1500:3aca3ffe
-Sloga Doboj,187928,Sloga Doboj,bosnia-and-herzegovina/sloga,Sloga Doboj,zeker,,logos/187928.webp,1500:d2b66c44
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Zrinjski Mostar,10107,Zrinjski Mostar,bosnia-and-herzegovina/zrinjski,Zrinjski Mostar,zeker,,,logos/10107.webp,1500:14fe94bc
+FK Borac Banja Luka,10116,Borac Banja Luka,bosnia-and-herzegovina/borac,Borac Banja Luka,zeker,,,logos/10116.webp,1500:c5a06044
+FK Sarajevo,10105,FK Sarajevo,bosnia-and-herzegovina/sarajevo,Sarajevo,zeker,,,logos/10105.webp,1500:e7494cdb
+Široki Brijeg,10112,Široki Brijeg,bosnia-and-herzegovina/siroki-brijeg,Široki Brijeg,zeker,,,logos/10112.webp,1500:7b2e3771
+BSK Banja Luka,187927,BSK Banja Luka,,,handmatig,https://fsrs.org/files/comet/grbovi/436.png,https://fsrs.org/klub/436,logos/187927.webp,sha256:a917e64deddaaf99
+Željezničar,10108,Željezničar,bosnia-and-herzegovina/zeljeznicar,Željezničar,zeker,,,logos/10108.webp,1500:72ad4c3c
+FK Velež Mostar,10122,FK Velež Mostar,bosnia-and-herzegovina/velez,Velež Mostar,zeker,,,logos/10122.webp,1500:45957b88
+Čelik Zenica,10109,Čelik Zenica,bosnia-and-herzegovina/celik,Čelik Zenica,zeker,,,logos/10109.webp,1500:2e03cdfc
+Radnik Bijeljina,10124,Radnik Bijeljina,bosnia-and-herzegovina/radnik-bijeljina,Radnik Bijeljina,zeker,,,logos/10124.webp,1500:3aca3ffe
+Sloga Doboj,187928,Sloga Doboj,bosnia-and-herzegovina/sloga,Sloga Doboj,zeker,,,logos/187928.webp,1500:d2b66c44

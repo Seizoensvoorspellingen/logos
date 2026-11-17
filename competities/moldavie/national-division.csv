@@ -1,9 +1,9 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-FC Sheriff,9729,FC Sheriff,moldova/sheriff,Sheriff,zeker,,logos/9729.webp,1500:b72abfe5
-Zimbru,8039,Zimbru,moldova/zimbru,Zimbru,zeker,,logos/8039.webp,1500:47c3e2c8
-CS Petrocub,561981,CS Petrocub,moldova/petrocub,Petrocub,zeker,,logos/561981.webp,1500:74d1ea23
-Dacia Buiucani,188151,Dacia Buiucani,moldova/dacia-buiucani,Dacia Buiucani,zeker,,logos/188151.webp,1500:c1549d0d
-FC Milsami Orhei,175682,FC Milsami Orhei,moldova/milsami,Milsami,nagekeken,,logos/175682.webp,1500:f327c85c
-Politehnica UTM,1771526,Politehnica UTM,moldova/politehnica-utm,Politehnica UTM,zeker,,logos/1771526.webp,1500:f450d45e
-Real Sireți,1900141,Real Sireți,moldova/real-sireti,Real Sireți,zeker,,logos/1900141.webp,1500:ae619952
-FC Bălți,8012,FC Bălți,moldova/balti,Bălți,zeker,,logos/8012.webp,1500:ecc373a2
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+FC Sheriff,9729,FC Sheriff,moldova/sheriff,Sheriff,zeker,,,logos/9729.webp,1500:b72abfe5
+Zimbru,8039,Zimbru,moldova/zimbru,Zimbru,zeker,,,logos/8039.webp,1500:47c3e2c8
+CS Petrocub,561981,CS Petrocub,moldova/petrocub,Petrocub,zeker,,,logos/561981.webp,1500:74d1ea23
+Dacia Buiucani,188151,Dacia Buiucani,moldova/dacia-buiucani,Dacia Buiucani,zeker,,,logos/188151.webp,1500:c1549d0d
+FC Milsami Orhei,175682,FC Milsami Orhei,moldova/milsami,Milsami,nagekeken,,,logos/175682.webp,1500:f327c85c
+Politehnica UTM,1771526,Politehnica UTM,moldova/politehnica-utm,Politehnica UTM,zeker,,,logos/1771526.webp,1500:f450d45e
+Real Sireți,1900141,Real Sireți,moldova/real-sireti,Real Sireți,zeker,,,logos/1900141.webp,1500:ae619952
+FC Bălți,8012,FC Bălți,moldova/balti,Bălți,zeker,,,logos/8012.webp,1500:ecc373a2

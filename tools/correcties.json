@@ -1,8 +1,11 @@
 {
-  "_uitleg": "Handmatige koppelingen per FotMob-naam: land/slug op football-logos.cc, een link naar een eigen logo (https://…, gaat naar de kolom eigen_logo), of leeg als er bewust geen logo is. Gaat voor op de automatische koppeling.",
+  "_uitleg": "Handmatige koppelingen per FotMob-naam: land/slug op football-logos.cc; of { logo: link naar het bestand, pagina: de pagina waar het vandaan komt } voor een logo van een andere bron (kolommen eigen_logo en eigen_pagina); of leeg als er bewust geen logo is. Gaat voor op de automatische koppeling.",
   "Rapid Wien": "austria/rapid-vienna",
   "Septemvri Sofia": "bulgaria/septemvri",
-  "BSK Banja Luka": "https://fsrs.org/files/comet/grbovi/436.png",
+  "BSK Banja Luka": {
+    "logo": "https://fsrs.org/files/comet/grbovi/436.png",
+    "pagina": "https://fsrs.org/klub/436"
+  },
   "Cardiff Met FC": "wales/cardiff-metropolitan-university",
   "Iraklis": "greece/iraklis-thessaloniki",
   "Omonia 29 Maiou": "cyprus/omonia-29m",
@@ -24,10 +27,22 @@
   "Laçi": "albania/lac",
   "GFK Tikves Kavadarci": "north-macedonia/tikves",
   "UN Käerjeng 97": "luxembourg/kaerjeng",
-  "OFK Mladost Donja Gorica": "https://fscg.me/files/images_comet/Club/49984_1ba8d420-0420-4f72-998b-065d6aa56fdc.png",
-  "Otrant": "https://fscg.me/files/images_comet/Club/48012_-1631662978.png",
-  "Vora": "https://assets.footylogos.com/logos/vora-fk/vora-fk-logo-footylogos.svg",
-  "FC Altai Oskemen": "https://altai-fc.kz/wp-content/fnw-languages/team-logos/altay.png",
+  "OFK Mladost Donja Gorica": {
+    "logo": "https://fscg.me/files/images_comet/Club/49984_1ba8d420-0420-4f72-998b-065d6aa56fdc.png",
+    "pagina": "https://fscg.me/klubovi/ofk-mladostlobbet-49984/"
+  },
+  "Otrant": {
+    "logo": "https://fscg.me/files/images_comet/Club/48012_-1631662978.png",
+    "pagina": "https://fscg.me/klubovi/otrant-olympic-48012/"
+  },
+  "Vora": {
+    "logo": "https://assets.footylogos.com/logos/vora-fk/vora-fk-logo-footylogos.svg",
+    "pagina": "https://www.footylogos.com/logos/vora-fk"
+  },
+  "FC Altai Oskemen": {
+    "logo": "https://altai-fc.kz/wp-content/fnw-languages/team-logos/altay.png",
+    "pagina": "https://altai-fc.kz/"
+  },
   "F91 Dudelange": "luxembourg/diddeleng",
   "Zhetysu Taldykorgan": "kazakhstan/jetisu",
   "Zhenis": "kazakhstan/jenis"

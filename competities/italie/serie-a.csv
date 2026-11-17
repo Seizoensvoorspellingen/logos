@@ -1,21 +1,21 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Lazio,8543,Lazio,italy/lazio,Lazio,zeker,,logos/8543.webp,1500:b6301260
-FC Internazionale Milano,8636,Inter,italy/inter,Inter,zeker,,logos/8636.webp,1500:d4ebfb95
-AS Roma,8686,Roma,italy/roma,AS Roma,zeker,,logos/8686.webp,1500:90753835
-AC Milan,8564,Milan,italy/milan,Milan,zeker,,logos/8564.webp,1500:6b4c62be
-Como 1907,10171,Como,italy/como-1907,Como 1907,zeker,,logos/10171.webp,1500:2337f58e
-Frosinone,9891,Frosinone,italy/frosinone,Frosinone Calcio,zeker,,logos/9891.webp,1500:d9a68220
-Juventus,9885,Juventus,italy/juventus,Juventus,zeker,,logos/9885.webp,1500:309408e0
-Bologna,9857,Bologna,italy/bologna,Bologna,zeker,,logos/9857.webp,1500:92dd0e4c
-Cagliari,8529,Cagliari,italy/cagliari,Cagliari,zeker,,logos/8529.webp,1500:040c0e0d
-SSC Napoli,9875,Napoli,italy/napoli,Napoli,zeker,,logos/9875.webp,1500:3e57a185
-Torino,9804,Torino,italy/torino,Torino,zeker,,logos/9804.webp,1500:9469ee1c
-Atalanta,8524,Atalanta,italy/atalanta,Atalanta,zeker,,logos/8524.webp,1500:fff93c78
-Genoa,10233,Genoa,italy/genoa,Genoa,zeker,,logos/10233.webp,1500:d0ba6ce4
-Lecce,9888,Lecce,italy/lecce,Lecce,zeker,,logos/9888.webp,1500:ee2489c4
-Fiorentina,8535,Fiorentina,italy/fiorentina,Fiorentina,zeker,,logos/8535.webp,1500:3a19a902
-Parma,10167,Parma,italy/parma,Parma,zeker,,logos/10167.webp,1500:2df6ab2c
-Sassuolo,7943,Sassuolo,italy/sassuolo,Sassuolo,zeker,,logos/7943.webp,1500:53f70920
-Monza,6504,Monza,italy/monza,AC Monza,zeker,,logos/6504.webp,1500:7f5ff4da
-Venezia,7881,Venezia,italy/venezia,Venezia,zeker,,logos/7881.webp,1500:2d3706e2
-Udinese,8600,Udinese,italy/udinese,Udinese,zeker,,logos/8600.webp,1500:e0c63894
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Lazio,8543,Lazio,italy/lazio,Lazio,zeker,,,logos/8543.webp,1500:b6301260
+FC Internazionale Milano,8636,Inter,italy/inter,Inter,zeker,,,logos/8636.webp,1500:d4ebfb95
+AS Roma,8686,Roma,italy/roma,AS Roma,zeker,,,logos/8686.webp,1500:90753835
+AC Milan,8564,Milan,italy/milan,Milan,zeker,,,logos/8564.webp,1500:6b4c62be
+Como 1907,10171,Como,italy/como-1907,Como 1907,zeker,,,logos/10171.webp,1500:2337f58e
+Frosinone,9891,Frosinone,italy/frosinone,Frosinone Calcio,zeker,,,logos/9891.webp,1500:d9a68220
+Juventus,9885,Juventus,italy/juventus,Juventus,zeker,,,logos/9885.webp,1500:309408e0
+Bologna,9857,Bologna,italy/bologna,Bologna,zeker,,,logos/9857.webp,1500:92dd0e4c
+Cagliari,8529,Cagliari,italy/cagliari,Cagliari,zeker,,,logos/8529.webp,1500:040c0e0d
+SSC Napoli,9875,Napoli,italy/napoli,Napoli,zeker,,,logos/9875.webp,1500:3e57a185
+Torino,9804,Torino,italy/torino,Torino,zeker,,,logos/9804.webp,1500:9469ee1c
+Atalanta,8524,Atalanta,italy/atalanta,Atalanta,zeker,,,logos/8524.webp,1500:fff93c78
+Genoa,10233,Genoa,italy/genoa,Genoa,zeker,,,logos/10233.webp,1500:d0ba6ce4
+Lecce,9888,Lecce,italy/lecce,Lecce,zeker,,,logos/9888.webp,1500:ee2489c4
+Fiorentina,8535,Fiorentina,italy/fiorentina,Fiorentina,zeker,,,logos/8535.webp,1500:3a19a902
+Parma,10167,Parma,italy/parma,Parma,zeker,,,logos/10167.webp,1500:2df6ab2c
+Sassuolo,7943,Sassuolo,italy/sassuolo,Sassuolo,zeker,,,logos/7943.webp,1500:53f70920
+Monza,6504,Monza,italy/monza,AC Monza,zeker,,,logos/6504.webp,1500:7f5ff4da
+Venezia,7881,Venezia,italy/venezia,Venezia,zeker,,,logos/7881.webp,1500:2d3706e2
+Udinese,8600,Udinese,italy/udinese,Udinese,zeker,,,logos/8600.webp,1500:e0c63894

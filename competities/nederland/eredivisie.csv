@@ -1,19 +1,19 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-PSV,8640,PSV Eindhoven,netherlands/psv,PSV Eindhoven,zeker,,logos/8640.webp,1500:235a2590
-Feyenoord,10235,Feyenoord,netherlands/feyenoord,Feyenoord,zeker,,logos/10235.webp,1500:6ee42168
-AFC Ajax,8593,Ajax,netherlands/ajax,Ajax,zeker,,logos/8593.webp,1500:ba64e68a
-FC Twente,8611,FC Twente,netherlands/twente,Twente,zeker,,logos/8611.webp,1500:ebf3d03a
-AZ,10229,AZ Alkmaar,netherlands/az-alkmaar,AZ Alkmaar,zeker,,logos/10229.webp,1500:8ae443c1
-sc Heerenveen,10228,SC Heerenveen,netherlands/sc-heerenveen,sc Heerenveen,zeker,,logos/10228.webp,1500:6fea520e
-Fortuna Sittard,6422,Fortuna Sittard,netherlands/fortuna-sittard,Fortuna Sittard,zeker,,logos/6422.webp,1500:f8eede25
-Go Ahead Eagles,6433,Go Ahead Eagles,netherlands/go-ahead-eagles,Go Ahead Eagles,zeker,,logos/6433.webp,1500:f23fb216
-FC Groningen,8674,FC Groningen,netherlands/fc-groningen,FC Groningen,zeker,,logos/8674.webp,1500:9a36d1f8
-SC Cambuur,7788,Cambuur,netherlands/sc-cambuur,SC Cambuur,zeker,,logos/7788.webp,1500:558a2b37
-N.E.C. Nijmegen,8464,NEC Nijmegen,netherlands/nec-nijmegen,N.E.C. Nijmegen,zeker,,logos/8464.webp,1500:2b23a93e
-Sparta Rotterdam,8614,Sparta Rotterdam,netherlands/sparta-rotterdam,Sparta Rotterdam,zeker,,logos/8614.webp,1500:9e85179e
-PEC Zwolle,6413,PEC Zwolle,netherlands/pec-zwolle,PEC Zwolle,zeker,,logos/6413.webp,1500:ec48634c
-FC Utrecht,9908,FC Utrecht,netherlands/fc-utrecht,FC Utrecht,zeker,,logos/9908.webp,1500:e2efd9f4
-Excelsior Rotterdam,10218,Excelsior,netherlands/excelsior-rotterdam,Excelsior Rotterdam,zeker,,logos/10218.webp,1500:8ed71923
-Telstar,6414,Telstar,netherlands/telstar,Telstar,zeker,,logos/6414.webp,1500:14c48b9d
-ADO Den Haag,10217,ADO Den Haag,netherlands/ado-den-haag,ADO Den Haag,zeker,,logos/10217.webp,1500:11660ed1
-Willem II,8525,Willem II,netherlands/willem-ii,Willem II,zeker,,logos/8525.webp,1500:18c35418
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+PSV,8640,PSV Eindhoven,netherlands/psv,PSV Eindhoven,zeker,,,logos/8640.webp,1500:235a2590
+Feyenoord,10235,Feyenoord,netherlands/feyenoord,Feyenoord,zeker,,,logos/10235.webp,1500:6ee42168
+AFC Ajax,8593,Ajax,netherlands/ajax,Ajax,zeker,,,logos/8593.webp,1500:ba64e68a
+FC Twente,8611,FC Twente,netherlands/twente,Twente,zeker,,,logos/8611.webp,1500:ebf3d03a
+AZ,10229,AZ Alkmaar,netherlands/az-alkmaar,AZ Alkmaar,zeker,,,logos/10229.webp,1500:8ae443c1
+sc Heerenveen,10228,SC Heerenveen,netherlands/sc-heerenveen,sc Heerenveen,zeker,,,logos/10228.webp,1500:6fea520e
+Fortuna Sittard,6422,Fortuna Sittard,netherlands/fortuna-sittard,Fortuna Sittard,zeker,,,logos/6422.webp,1500:f8eede25
+Go Ahead Eagles,6433,Go Ahead Eagles,netherlands/go-ahead-eagles,Go Ahead Eagles,zeker,,,logos/6433.webp,1500:f23fb216
+FC Groningen,8674,FC Groningen,netherlands/fc-groningen,FC Groningen,zeker,,,logos/8674.webp,1500:9a36d1f8
+SC Cambuur,7788,Cambuur,netherlands/sc-cambuur,SC Cambuur,zeker,,,logos/7788.webp,1500:558a2b37
+N.E.C. Nijmegen,8464,NEC Nijmegen,netherlands/nec-nijmegen,N.E.C. Nijmegen,zeker,,,logos/8464.webp,1500:2b23a93e
+Sparta Rotterdam,8614,Sparta Rotterdam,netherlands/sparta-rotterdam,Sparta Rotterdam,zeker,,,logos/8614.webp,1500:9e85179e
+PEC Zwolle,6413,PEC Zwolle,netherlands/pec-zwolle,PEC Zwolle,zeker,,,logos/6413.webp,1500:ec48634c
+FC Utrecht,9908,FC Utrecht,netherlands/fc-utrecht,FC Utrecht,zeker,,,logos/9908.webp,1500:e2efd9f4
+Excelsior Rotterdam,10218,Excelsior,netherlands/excelsior-rotterdam,Excelsior Rotterdam,zeker,,,logos/10218.webp,1500:8ed71923
+Telstar,6414,Telstar,netherlands/telstar,Telstar,zeker,,,logos/6414.webp,1500:14c48b9d
+ADO Den Haag,10217,ADO Den Haag,netherlands/ado-den-haag,ADO Den Haag,zeker,,,logos/10217.webp,1500:11660ed1
+Willem II,8525,Willem II,netherlands/willem-ii,Willem II,zeker,,,logos/8525.webp,1500:18c35418

@@ -61,7 +61,7 @@ function flClubs(html, land) {
 
 const slugVan = (s) => norm(s).replace(/ /g, "-");
 const csvVeld = (v) => (v == null ? "" : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v));
-const KOLOMMEN = ["naam", "fotmob_id", "fotmob_naam", "football_logos", "zekerheid", "eigen_logo"];
+const KOLOMMEN = ["naam", "fotmob_id", "fotmob_naam", "football_logos", "zekerheid", "eigen_logo", "eigen_pagina"];
 
 (async () => {
   const poule = arg("--poule") ? require(path.resolve(arg("--poule"))) : { FOTMOB_TEAM_CODES: {}, FOTMOB_NAMES: {} };
@@ -100,8 +100,8 @@ const KOLOMMEN = ["naam", "fotmob_id", "fotmob_naam", "football_logos", "zekerhe
       const vast = vasteSlug.get(naam);
       if (t.naam in correcties) {
         const c = correcties[t.naam];
-        const eigen = c.startsWith("http");
-        return { naam, fotmob_id: t.id, fotmob_naam: t.naam, football_logos: eigen ? "" : c, zekerheid: c ? "handmatig" : "geen", eigen_logo: eigen ? c : "" };
+        const eigen = typeof c === "object" && c !== null;
+        return { naam, fotmob_id: t.id, fotmob_naam: t.naam, football_logos: eigen ? "" : c, zekerheid: c ? "handmatig" : "geen", eigen_logo: eigen ? c.logo : "", eigen_pagina: eigen ? c.pagina || "" : "" };
       }
       if (vast) beste = { slug: vast, s: 1 };
       else for (const k of fl) {

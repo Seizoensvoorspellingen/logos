@@ -1,19 +1,19 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Paris Saint-Germain,9847,Paris Saint-Germain,france/paris-saint-germain,PSG,zeker,,logos/9847.webp,1500:976d063a
-Lille LOSC,8639,Lille,france/lille,Lille,zeker,,logos/8639.webp,1500:682b7a4f
-Paris FC,6379,Paris FC,france/paris-fc,Paris FC,zeker,,logos/6379.webp,1500:761834b9
-Olympique de Marseille,8592,Marseille,france/marseille,Marseille,zeker,,logos/8592.webp,1500:6f770410
-Olympique Lyonnais,9748,Lyon,france/lyon,Olympique Lyonnais,zeker,,logos/9748.webp,1500:05fe1f9a
-Nice,9831,Nice,france/nice,Nice,zeker,,logos/9831.webp,1500:56debe22
-AS Monaco,9829,Monaco,france/as-monaco,AS Monaco,zeker,,logos/9829.webp,1500:1d58091e
-Stade Rennais F.C.,9851,Rennes,france/rennes,Rennes,zeker,,logos/9851.webp,1500:f07dde44
-Brest,8521,Brest,france/brest,Brest,zeker,,logos/8521.webp,1500:b0b54212
-Lorient,8689,Lorient,france/lorient,Lorient FC,zeker,,logos/8689.webp,1500:a67166bb
-RC Lens,8588,Lens,france/rc-lens,RC Lens,zeker,,logos/8588.webp,1500:05ddeba2
-Toulouse,9941,Toulouse,france/toulouse,Toulouse,zeker,,logos/9941.webp,1500:c663409c
-Strasbourg,9848,Strasbourg,france/as-strasbourg,AS Strasbourg,zeker,,logos/9848.webp,1500:f3ff6940
-Auxerre,8583,Auxerre,france/auxerre,Auxerre,zeker,,logos/8583.webp,1500:6efc07b8
-Le Mans,8682,Le Mans,france/le-mans,Le Mans FC,zeker,,logos/8682.webp,1500:37970c7e
-Angers,8121,Angers,france/angers,Angers,zeker,,logos/8121.webp,1500:ab05fa15
-Troyes,10242,Troyes,france/troyes,Troyes,zeker,,logos/10242.webp,1500:00182c73
-Le Havre,9746,Le Havre,france/le-havre-ac,Le Havre AC,zeker,,logos/9746.webp,1500:8beb3c76
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Paris Saint-Germain,9847,Paris Saint-Germain,france/paris-saint-germain,PSG,zeker,,,logos/9847.webp,1500:976d063a
+Lille LOSC,8639,Lille,france/lille,Lille,zeker,,,logos/8639.webp,1500:682b7a4f
+Paris FC,6379,Paris FC,france/paris-fc,Paris FC,zeker,,,logos/6379.webp,1500:761834b9
+Olympique de Marseille,8592,Marseille,france/marseille,Marseille,zeker,,,logos/8592.webp,1500:6f770410
+Olympique Lyonnais,9748,Lyon,france/lyon,Olympique Lyonnais,zeker,,,logos/9748.webp,1500:05fe1f9a
+Nice,9831,Nice,france/nice,Nice,zeker,,,logos/9831.webp,1500:56debe22
+AS Monaco,9829,Monaco,france/as-monaco,AS Monaco,zeker,,,logos/9829.webp,1500:1d58091e
+Stade Rennais F.C.,9851,Rennes,france/rennes,Rennes,zeker,,,logos/9851.webp,1500:f07dde44
+Brest,8521,Brest,france/brest,Brest,zeker,,,logos/8521.webp,1500:b0b54212
+Lorient,8689,Lorient,france/lorient,Lorient FC,zeker,,,logos/8689.webp,1500:a67166bb
+RC Lens,8588,Lens,france/rc-lens,RC Lens,zeker,,,logos/8588.webp,1500:05ddeba2
+Toulouse,9941,Toulouse,france/toulouse,Toulouse,zeker,,,logos/9941.webp,1500:c663409c
+Strasbourg,9848,Strasbourg,france/as-strasbourg,AS Strasbourg,zeker,,,logos/9848.webp,1500:f3ff6940
+Auxerre,8583,Auxerre,france/auxerre,Auxerre,zeker,,,logos/8583.webp,1500:6efc07b8
+Le Mans,8682,Le Mans,france/le-mans,Le Mans FC,zeker,,,logos/8682.webp,1500:37970c7e
+Angers,8121,Angers,france/angers,Angers,zeker,,,logos/8121.webp,1500:ab05fa15
+Troyes,10242,Troyes,france/troyes,Troyes,zeker,,,logos/10242.webp,1500:00182c73
+Le Havre,9746,Le Havre,france/le-havre-ac,Le Havre AC,zeker,,,logos/9746.webp,1500:8beb3c76

@@ -1,13 +1,13 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-FC Noah,866111,FC Noah,armenia/noah,Noah,zeker,,logos/866111.webp,1500:64b05647
-Pyunik,6345,Pyunik,armenia/pyunik,Pyunik,zeker,,logos/6345.webp,1500:5c39daed
-Ararat-Armenia,866109,Ararat Armenia,armenia/ararat-armenia,Ararat-Armenia,zeker,,logos/866109.webp,1500:9e60fed5
-Alashkert FC,310094,Alashkert FC,armenia/alashkert,Alashkert,zeker,,logos/310094.webp,1500:ff8fb579
-Sardarapat,2101520,Sardarapat,armenia/sardarapat-fc,Sardarapat FC,zeker,,logos/2101520.webp,1500:11a82351
-Urartu FC,7979,Urartu FC,armenia/urartu,Urartu,zeker,,logos/7979.webp,1500:b64f9f18
-Shirak,2211,Shirak,armenia/shirak,Shirak,zeker,,logos/2211.webp,1500:d99f03e0
-Van,1078400,Van,armenia/van,Van,zeker,,logos/1078400.webp,1500:53eaf7cd
-Ararat,2212,Ararat,armenia/ararat,Ararat,zeker,,logos/2212.webp,1500:cd5851d9
-Syunik,6569,Syunik,armenia/fc-syunik,FC Syunik,zeker,,logos/6569.webp,1500:6f02b3d1
-BKMA,1078402,BKMA,armenia/bkma-yerevan,BKMA Yerevan,nagekeken,,logos/1078402.webp,1500:622e8d61
-Gandzasar,1388663,Gandzasar,armenia/gandzasar,Gandzasar,zeker,,logos/1388663.webp,1500:01b48083
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+FC Noah,866111,FC Noah,armenia/noah,Noah,zeker,,,logos/866111.webp,1500:64b05647
+Pyunik,6345,Pyunik,armenia/pyunik,Pyunik,zeker,,,logos/6345.webp,1500:5c39daed
+Ararat-Armenia,866109,Ararat Armenia,armenia/ararat-armenia,Ararat-Armenia,zeker,,,logos/866109.webp,1500:9e60fed5
+Alashkert FC,310094,Alashkert FC,armenia/alashkert,Alashkert,zeker,,,logos/310094.webp,1500:ff8fb579
+Sardarapat,2101520,Sardarapat,armenia/sardarapat-fc,Sardarapat FC,zeker,,,logos/2101520.webp,1500:11a82351
+Urartu FC,7979,Urartu FC,armenia/urartu,Urartu,zeker,,,logos/7979.webp,1500:b64f9f18
+Shirak,2211,Shirak,armenia/shirak,Shirak,zeker,,,logos/2211.webp,1500:d99f03e0
+Van,1078400,Van,armenia/van,Van,zeker,,,logos/1078400.webp,1500:53eaf7cd
+Ararat,2212,Ararat,armenia/ararat,Ararat,zeker,,,logos/2212.webp,1500:cd5851d9
+Syunik,6569,Syunik,armenia/fc-syunik,FC Syunik,zeker,,,logos/6569.webp,1500:6f02b3d1
+BKMA,1078402,BKMA,armenia/bkma-yerevan,BKMA Yerevan,nagekeken,,,logos/1078402.webp,1500:622e8d61
+Gandzasar,1388663,Gandzasar,armenia/gandzasar,Gandzasar,zeker,,,logos/1388663.webp,1500:01b48083

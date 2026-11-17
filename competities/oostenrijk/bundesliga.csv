@@ -1,13 +1,13 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Rapid Wien,10015,Rapid Wien,austria/rapid-vienna,Rapid Vienna,handmatig,,logos/10015.webp,1500:04ac297b
-FC Red Bull Salzburg,10013,Salzburg,austria/salzburg,Salzburg,zeker,,logos/10013.webp,1500:f0af30d9
-LASK,9977,LASK,austria/lask,LASK,zeker,,logos/9977.webp,1500:31701bc3
-Hartberg,10056,Hartberg,austria/hartberg,Hartberg,zeker,,logos/10056.webp,1500:315e7e79
-SK Sturm Graz,10014,Sturm Graz,austria/sturm-graz,Sturm Graz,zeker,,logos/10014.webp,1500:a67c9799
-Ried,10017,Ried,austria/ried,Ried,zeker,,logos/10017.webp,1500:77bf2e1a
-WSG Tirol,1583,WSG Tirol,austria/tirol,Tirol,nagekeken,,logos/1583.webp,1500:644cc681
-Austria Lustenau,9982,Austria Lustenau,austria/lustenau,Lustenau,nagekeken,,logos/9982.webp,1500:94235114
-Grazer AK,10012,Grazer AK,austria/grazer-ak,Grazer AK,zeker,,logos/10012.webp,1500:785fa61e
-Altach,10008,Altach,austria/altach,Rheindorf Altach,zeker,,logos/10008.webp,1500:3d6b4e1a
-Austria Wien,10011,Austria Wien,austria/austria-wien,Austria Wien,zeker,,logos/10011.webp,1500:32c22479
-Wolfsberger AC,1954,Wolfsberger AC,austria/wolfsberg,Wolfsberg,zeker,,logos/1954.webp,1500:e6f46320
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Rapid Wien,10015,Rapid Wien,austria/rapid-vienna,Rapid Vienna,handmatig,,,logos/10015.webp,1500:04ac297b
+FC Red Bull Salzburg,10013,Salzburg,austria/salzburg,Salzburg,zeker,,,logos/10013.webp,1500:f0af30d9
+LASK,9977,LASK,austria/lask,LASK,zeker,,,logos/9977.webp,1500:31701bc3
+Hartberg,10056,Hartberg,austria/hartberg,Hartberg,zeker,,,logos/10056.webp,1500:315e7e79
+SK Sturm Graz,10014,Sturm Graz,austria/sturm-graz,Sturm Graz,zeker,,,logos/10014.webp,1500:a67c9799
+Ried,10017,Ried,austria/ried,Ried,zeker,,,logos/10017.webp,1500:77bf2e1a
+WSG Tirol,1583,WSG Tirol,austria/tirol,Tirol,nagekeken,,,logos/1583.webp,1500:644cc681
+Austria Lustenau,9982,Austria Lustenau,austria/lustenau,Lustenau,nagekeken,,,logos/9982.webp,1500:94235114
+Grazer AK,10012,Grazer AK,austria/grazer-ak,Grazer AK,zeker,,,logos/10012.webp,1500:785fa61e
+Altach,10008,Altach,austria/altach,Rheindorf Altach,zeker,,,logos/10008.webp,1500:3d6b4e1a
+Austria Wien,10011,Austria Wien,austria/austria-wien,Austria Wien,zeker,,,logos/10011.webp,1500:32c22479
+Wolfsberger AC,1954,Wolfsberger AC,austria/wolfsberg,Wolfsberg,zeker,,,logos/1954.webp,1500:e6f46320

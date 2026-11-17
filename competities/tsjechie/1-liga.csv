@@ -1,17 +1,17 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-SK Slavia Praha,7787,Slavia Prague,czech-republic/slavia-praha,SK Slavia Praha,zeker,,logos/7787.webp,1500:8b22b81e
-Slovan Liberec,10245,Slovan Liberec,czech-republic/liberec,Slovan Liberec,zeker,,logos/10245.webp,1500:3262c251
-Mladá Boleslav,10180,Mladá Boleslav,czech-republic/mlada-boleslav,Mladá Boleslav,zeker,,logos/10180.webp,1500:c76687f3
-AC Sparta Praha,10247,Sparta Prague,czech-republic/sparta-praha,AC Sparta Praha,zeker,,logos/10247.webp,1500:47c5f852
-Sigma Olomouc,6461,Sigma Olomouc,czech-republic/olomouc,Sigma Olomouc,zeker,,logos/6461.webp,1500:bf6011fa
-Teplice,4721,Teplice,czech-republic/teplice,Teplice,zeker,,logos/4721.webp,1500:9b63527f
-FK Jablonec,7758,Jablonec,czech-republic/jablonec,Jablonec,zeker,,logos/7758.webp,1500:984b98b9
-FC Viktoria Plzeň,6033,Viktoria Plzeň,czech-republic/viktoria-plzen,Viktoria Plzeň,zeker,,logos/6033.webp,1500:05eafdc2
-Bohemians 1905,1670,Bohemians 1905,czech-republic/bohemians-praha,Bohemians Praha,nagekeken,,logos/1670.webp,1500:a0307e7f
-FC Zbrojovka Brno,1673,FC Zbrojovka Brno,czech-republic/zbrojovka-brno,FC Zbrojovka Brno,zeker,,logos/1673.webp,1500:b8863064
-Hradec Králové,1712,Hradec Králové,czech-republic/hradec-kralove,Hradec Králové,zeker,,logos/1712.webp,1500:ad98d5e8
-Pardubice,2406,Pardubice,czech-republic/pardubice,Pardubice,zeker,,logos/2406.webp,1500:4cef66c0
-Baník Ostrava,6362,Baník Ostrava,czech-republic/banik,Baník Ostrava,zeker,,logos/6362.webp,1500:22fe6b7e
-Artis Brno,106189,Artis Brno,czech-republic/artis-brno,SK Artis Brno,zeker,,logos/106189.webp,1500:da87bda7
-Slovácko,2021,Slovácko,czech-republic/slovacko,1. FC Slovácko,zeker,,logos/2021.webp,1500:24bc026c
-FC Zlín,1860,FC Zlín,czech-republic/zlin,Zlín,zeker,,logos/1860.webp,1500:21fed338
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+SK Slavia Praha,7787,Slavia Prague,czech-republic/slavia-praha,SK Slavia Praha,zeker,,,logos/7787.webp,1500:8b22b81e
+Slovan Liberec,10245,Slovan Liberec,czech-republic/liberec,Slovan Liberec,zeker,,,logos/10245.webp,1500:3262c251
+Mladá Boleslav,10180,Mladá Boleslav,czech-republic/mlada-boleslav,Mladá Boleslav,zeker,,,logos/10180.webp,1500:c76687f3
+AC Sparta Praha,10247,Sparta Prague,czech-republic/sparta-praha,AC Sparta Praha,zeker,,,logos/10247.webp,1500:47c5f852
+Sigma Olomouc,6461,Sigma Olomouc,czech-republic/olomouc,Sigma Olomouc,zeker,,,logos/6461.webp,1500:bf6011fa
+Teplice,4721,Teplice,czech-republic/teplice,Teplice,zeker,,,logos/4721.webp,1500:9b63527f
+FK Jablonec,7758,Jablonec,czech-republic/jablonec,Jablonec,zeker,,,logos/7758.webp,1500:984b98b9
+FC Viktoria Plzeň,6033,Viktoria Plzeň,czech-republic/viktoria-plzen,Viktoria Plzeň,zeker,,,logos/6033.webp,1500:05eafdc2
+Bohemians 1905,1670,Bohemians 1905,czech-republic/bohemians-praha,Bohemians Praha,nagekeken,,,logos/1670.webp,1500:a0307e7f
+FC Zbrojovka Brno,1673,FC Zbrojovka Brno,czech-republic/zbrojovka-brno,FC Zbrojovka Brno,zeker,,,logos/1673.webp,1500:b8863064
+Hradec Králové,1712,Hradec Králové,czech-republic/hradec-kralove,Hradec Králové,zeker,,,logos/1712.webp,1500:ad98d5e8
+Pardubice,2406,Pardubice,czech-republic/pardubice,Pardubice,zeker,,,logos/2406.webp,1500:4cef66c0
+Baník Ostrava,6362,Baník Ostrava,czech-republic/banik,Baník Ostrava,zeker,,,logos/6362.webp,1500:22fe6b7e
+Artis Brno,106189,Artis Brno,czech-republic/artis-brno,SK Artis Brno,zeker,,,logos/106189.webp,1500:da87bda7
+Slovácko,2021,Slovácko,czech-republic/slovacko,1. FC Slovácko,zeker,,,logos/2021.webp,1500:24bc026c
+FC Zlín,1860,FC Zlín,czech-republic/zlin,Zlín,zeker,,,logos/1860.webp,1500:21fed338

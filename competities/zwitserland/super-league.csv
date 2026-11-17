@@ -1,13 +1,13 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-FC Lugano,7896,Lugano,switzerland/lugano,Lugano,zeker,,logos/7896.webp,1500:34f4e608
-Young Boys,10192,Young Boys,switzerland/young-boys,Young Boys,zeker,,logos/10192.webp,1500:d5b49142
-Sion,10179,Sion,switzerland/sion,Sion,zeker,,logos/10179.webp,1500:e21651c8
-St. Gallen,10190,St. Gallen,switzerland/st-gallen,St. Gallen,zeker,,logos/10190.webp,1500:c4644616
-FC Zürich,10243,FC Zürich,switzerland/zurich,Zürich,zeker,,logos/10243.webp,1500:9501b096
-Servette,9777,Servette,switzerland/servette,Servette,zeker,,logos/9777.webp,1500:747d25a0
-Basel,9931,Basel,switzerland/basel,Basel,zeker,,logos/9931.webp,1500:3c60cfda
-FC Thun,10191,Thun,switzerland/thun,Thun,zeker,,logos/10191.webp,1500:27756fb8
-Luzern,10199,Luzern,switzerland/luzern,Luzern,zeker,,logos/10199.webp,1500:3aff4d6a
-Grasshopper,9956,Grasshopper,switzerland/grasshoppers,Grasshoppers,zeker,,logos/9956.webp,1500:b89906d8
-FC Vaduz,9824,FC Vaduz,liechtenstein/vaduz,Vaduz,handmatig,,logos/9824.webp,700:49fa78ff
-Lausanne,7730,Lausanne,switzerland/lausanne-sport,Lausanne-Sport,nagekeken,,logos/7730.webp,1500:36a1d911
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+FC Lugano,7896,Lugano,switzerland/lugano,Lugano,zeker,,,logos/7896.webp,1500:34f4e608
+Young Boys,10192,Young Boys,switzerland/young-boys,Young Boys,zeker,,,logos/10192.webp,1500:d5b49142
+Sion,10179,Sion,switzerland/sion,Sion,zeker,,,logos/10179.webp,1500:e21651c8
+St. Gallen,10190,St. Gallen,switzerland/st-gallen,St. Gallen,zeker,,,logos/10190.webp,1500:c4644616
+FC Zürich,10243,FC Zürich,switzerland/zurich,Zürich,zeker,,,logos/10243.webp,1500:9501b096
+Servette,9777,Servette,switzerland/servette,Servette,zeker,,,logos/9777.webp,1500:747d25a0
+Basel,9931,Basel,switzerland/basel,Basel,zeker,,,logos/9931.webp,1500:3c60cfda
+FC Thun,10191,Thun,switzerland/thun,Thun,zeker,,,logos/10191.webp,1500:27756fb8
+Luzern,10199,Luzern,switzerland/luzern,Luzern,zeker,,,logos/10199.webp,1500:3aff4d6a
+Grasshopper,9956,Grasshopper,switzerland/grasshoppers,Grasshoppers,zeker,,,logos/9956.webp,1500:b89906d8
+FC Vaduz,9824,FC Vaduz,liechtenstein/vaduz,Vaduz,handmatig,,,logos/9824.webp,700:49fa78ff
+Lausanne,7730,Lausanne,switzerland/lausanne-sport,Lausanne-Sport,nagekeken,,,logos/7730.webp,1500:36a1d911

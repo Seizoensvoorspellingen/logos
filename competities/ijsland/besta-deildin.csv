@@ -1,13 +1,13 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Víkingur Reykjavík,6017,Víkingur Reykjavík,iceland/vikingur-r,Víkingur R.,nagekeken,,logos/6017.webp,1500:798a7096
-KR Reykjavík,8130,KR Reykjavík,iceland/kr,KR,nagekeken,,logos/8130.webp,1500:592c4774
-Fram Reykjavík,6291,Fram Reykjavík,iceland/fram,Fram,nagekeken,,logos/6291.webp,1500:03632496
-ÍA Akranes,8004,ÍA Akranes,iceland/ia,ÍA,nagekeken,,logos/8004.webp,1500:50343b58
-Breiðablik,8332,Breiðablik,iceland/breidablik,Breidablik,nagekeken,,logos/8332.webp,1500:0663ad81
-Keflavík,4472,Keflavík,iceland/keflavik,Keflavík,zeker,,logos/4472.webp,1500:c400bb3d
-Stjarnan,6343,Stjarnan,iceland/stjarnan,Stjarnan,zeker,,logos/6343.webp,1500:931f37ba
-Valur,8064,Valur,iceland/valur,Valur,zeker,,logos/8064.webp,1500:8ab7542b
-FH Hafnarfjörður,8151,FH Hafnarfjörður,iceland/fh,FH,handmatig,,logos/8151.webp,1500:ce762cdf
-Thór Akureyri,4496,Thór Akureyri,iceland/thor,Thór,nagekeken,,logos/4496.webp,1500:36dda9c0
-KA Akureyri,2165,KA Akureyri,iceland/ka,KA,nagekeken,,logos/2165.webp,1500:11a3e044
-ÍBV Vestmannaeyjar,8299,ÍBV Vestmannaeyjar,iceland/ibv,ÍBV,nagekeken,,logos/8299.webp,1500:c9254edb
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Víkingur Reykjavík,6017,Víkingur Reykjavík,iceland/vikingur-r,Víkingur R.,nagekeken,,,logos/6017.webp,1500:798a7096
+KR Reykjavík,8130,KR Reykjavík,iceland/kr,KR,nagekeken,,,logos/8130.webp,1500:592c4774
+Fram Reykjavík,6291,Fram Reykjavík,iceland/fram,Fram,nagekeken,,,logos/6291.webp,1500:03632496
+ÍA Akranes,8004,ÍA Akranes,iceland/ia,ÍA,nagekeken,,,logos/8004.webp,1500:50343b58
+Breiðablik,8332,Breiðablik,iceland/breidablik,Breidablik,nagekeken,,,logos/8332.webp,1500:0663ad81
+Keflavík,4472,Keflavík,iceland/keflavik,Keflavík,zeker,,,logos/4472.webp,1500:c400bb3d
+Stjarnan,6343,Stjarnan,iceland/stjarnan,Stjarnan,zeker,,,logos/6343.webp,1500:931f37ba
+Valur,8064,Valur,iceland/valur,Valur,zeker,,,logos/8064.webp,1500:8ab7542b
+FH Hafnarfjörður,8151,FH Hafnarfjörður,iceland/fh,FH,handmatig,,,logos/8151.webp,1500:ce762cdf
+Thór Akureyri,4496,Thór Akureyri,iceland/thor,Thór,nagekeken,,,logos/4496.webp,1500:36dda9c0
+KA Akureyri,2165,KA Akureyri,iceland/ka,KA,nagekeken,,,logos/2165.webp,1500:11a3e044
+ÍBV Vestmannaeyjar,8299,ÍBV Vestmannaeyjar,iceland/ibv,ÍBV,nagekeken,,,logos/8299.webp,1500:c9254edb

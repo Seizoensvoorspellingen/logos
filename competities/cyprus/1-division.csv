@@ -1,15 +1,15 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-AEK Larnaca,7797,AEK Larnaca,cyprus/aek-larnaca,AEK Larnaca,zeker,,logos/7797.webp,1500:16892c26
-Omonoia FC,8044,Omonia Nicosia,cyprus/omonoia,Omonoia Nicosia,nagekeken,,logos/8044.webp,1500:e6ab0b77
-AEL Limassol,2134,AEL Limassol,cyprus/ael,AEL Limassol,zeker,,logos/2134.webp,1500:9ab2f61c
-APOEL Nicosia,8621,APOEL Nicosia,cyprus/apoel,APOEL,nagekeken,,logos/8621.webp,1500:e54d171c
-Apollon Limassol,8003,Apollon Limassol,cyprus/apollon,Apollon Limassol,zeker,,logos/8003.webp,1500:52e9c8b3
-Pafos FC,2137,Pafos FC,cyprus/pafos,Pafos,zeker,,logos/2137.webp,1500:bcf708f9
-Aris Limassol,2136,Aris Limassol,cyprus/aris-limassol,Aris Limassol,zeker,,logos/2136.webp,1500:448c578d
-Omonia 29 Maiou,1282231,Omonia 29 Maiou,cyprus/omonia-29m,Omonia 29M,handmatig,,logos/1282231.webp,1500:3074fd8d
-Olympiakos Nicosia,5771,Olympiakos Nicosia,cyprus/olympiakos,Olympiakos Nicosia,zeker,,logos/5771.webp,1500:14f76b98
-Nea Salamis,8590,Nea Salamis,cyprus/nea-salamis,Nea Salamis,zeker,,logos/8590.webp,1500:12a80531
-Anorthosis,6243,Anorthosis,cyprus/anorthosis,Anorthosis Famagusta,zeker,,logos/6243.webp,1500:db69c89e
-Karmiotissa,468676,Karmiotissa,cyprus/karmiotissa,Karmiotissa,zeker,,logos/468676.webp,1500:988dd975
-Omonia Aradippou,154798,Omonia Aradippou,cyprus/omonia-aradippou,Omonia Aradippou,zeker,,logos/154798.webp,1500:cc7dc0ce
-Krasava Ypsonas FC,1075325,Krasava Ypsonas FC,cyprus/krasava-ypsonas,Krasava Ypsonas,zeker,,logos/1075325.webp,1500:ae80af89
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+AEK Larnaca,7797,AEK Larnaca,cyprus/aek-larnaca,AEK Larnaca,zeker,,,logos/7797.webp,1500:16892c26
+Omonoia FC,8044,Omonia Nicosia,cyprus/omonoia,Omonoia Nicosia,nagekeken,,,logos/8044.webp,1500:e6ab0b77
+AEL Limassol,2134,AEL Limassol,cyprus/ael,AEL Limassol,zeker,,,logos/2134.webp,1500:9ab2f61c
+APOEL Nicosia,8621,APOEL Nicosia,cyprus/apoel,APOEL,nagekeken,,,logos/8621.webp,1500:e54d171c
+Apollon Limassol,8003,Apollon Limassol,cyprus/apollon,Apollon Limassol,zeker,,,logos/8003.webp,1500:52e9c8b3
+Pafos FC,2137,Pafos FC,cyprus/pafos,Pafos,zeker,,,logos/2137.webp,1500:bcf708f9
+Aris Limassol,2136,Aris Limassol,cyprus/aris-limassol,Aris Limassol,zeker,,,logos/2136.webp,1500:448c578d
+Omonia 29 Maiou,1282231,Omonia 29 Maiou,cyprus/omonia-29m,Omonia 29M,handmatig,,,logos/1282231.webp,1500:3074fd8d
+Olympiakos Nicosia,5771,Olympiakos Nicosia,cyprus/olympiakos,Olympiakos Nicosia,zeker,,,logos/5771.webp,1500:14f76b98
+Nea Salamis,8590,Nea Salamis,cyprus/nea-salamis,Nea Salamis,zeker,,,logos/8590.webp,1500:12a80531
+Anorthosis,6243,Anorthosis,cyprus/anorthosis,Anorthosis Famagusta,zeker,,,logos/6243.webp,1500:db69c89e
+Karmiotissa,468676,Karmiotissa,cyprus/karmiotissa,Karmiotissa,zeker,,,logos/468676.webp,1500:988dd975
+Omonia Aradippou,154798,Omonia Aradippou,cyprus/omonia-aradippou,Omonia Aradippou,zeker,,,logos/154798.webp,1500:cc7dc0ce
+Krasava Ypsonas FC,1075325,Krasava Ypsonas FC,cyprus/krasava-ypsonas,Krasava Ypsonas,zeker,,,logos/1075325.webp,1500:ae80af89

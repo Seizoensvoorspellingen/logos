@@ -1,17 +1,17 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-Viking,8478,Viking,norway/viking,Viking FK,zeker,,logos/8478.webp,1500:5cde2850
-Bodø/Glimt,8402,Bodø/Glimt,norway/bodo-glimt,Bodø/Glimt,zeker,,logos/8402.webp,1500:1e2d214b
-Rosenborg,8422,Rosenborg,norway/rosenborg,Rosenborg,zeker,,logos/8422.webp,1500:cc3a449a
-Lillestrøm,8476,Lillestrøm,norway/lillestrom,Lillestrøm,zeker,,logos/8476.webp,1500:e45f157b
-Molde,9917,Molde,norway/molde,Molde,zeker,,logos/9917.webp,1500:bbe87c40
-Tromsø,8608,Tromsø,norway/tromso,Tromsø,zeker,,logos/8608.webp,1500:4e8c697a
-Brann,8468,Brann,norway/brann,Brann,zeker,,logos/8468.webp,1500:bead92dd
-Vålerenga,8007,Vålerenga,norway/valerenga,Vålerenga,zeker,,logos/8007.webp,1500:a083699b
-Sarpsborg 08,8509,Sarpsborg 08,norway/sarpsborg,Sarpsborg 08,zeker,,logos/8509.webp,1500:4a3e2122
-KFUM,2305,KFUM,norway/kfum,KFUM,zeker,,logos/2305.webp,1500:9f82c65b
-Hamarkameratene,8448,Hamarkameratene,norway/hamkam,Hamarkameratene,zeker,,logos/8448.webp,1500:89962342
-Fredrikstad,8417,Fredrikstad,norway/fredrikstad,Fredrikstad,zeker,,logos/8417.webp,1500:7671fbd0
-Sandefjord,8609,Sandefjord,norway/sandefjord,Sandefjord,zeker,,logos/8609.webp,1500:b5942fa5
-Kristiansund,8605,Kristiansund,norway/kristiansund,Kristiansund,zeker,,logos/8605.webp,1500:1c17aa07
-Aalesund,8404,Aalesund,norway/aalesund,Aalesund,zeker,,logos/8404.webp,1500:1b3ff2f2
-Start,9919,Start,norway/start,IK Start,zeker,,logos/9919.webp,1500:de18d06e
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+Viking,8478,Viking,norway/viking,Viking FK,zeker,,,logos/8478.webp,1500:5cde2850
+Bodø/Glimt,8402,Bodø/Glimt,norway/bodo-glimt,Bodø/Glimt,zeker,,,logos/8402.webp,1500:1e2d214b
+Rosenborg,8422,Rosenborg,norway/rosenborg,Rosenborg,zeker,,,logos/8422.webp,1500:cc3a449a
+Lillestrøm,8476,Lillestrøm,norway/lillestrom,Lillestrøm,zeker,,,logos/8476.webp,1500:e45f157b
+Molde,9917,Molde,norway/molde,Molde,zeker,,,logos/9917.webp,1500:bbe87c40
+Tromsø,8608,Tromsø,norway/tromso,Tromsø,zeker,,,logos/8608.webp,1500:4e8c697a
+Brann,8468,Brann,norway/brann,Brann,zeker,,,logos/8468.webp,1500:bead92dd
+Vålerenga,8007,Vålerenga,norway/valerenga,Vålerenga,zeker,,,logos/8007.webp,1500:a083699b
+Sarpsborg 08,8509,Sarpsborg 08,norway/sarpsborg,Sarpsborg 08,zeker,,,logos/8509.webp,1500:4a3e2122
+KFUM,2305,KFUM,norway/kfum,KFUM,zeker,,,logos/2305.webp,1500:9f82c65b
+Hamarkameratene,8448,Hamarkameratene,norway/hamkam,Hamarkameratene,zeker,,,logos/8448.webp,1500:89962342
+Fredrikstad,8417,Fredrikstad,norway/fredrikstad,Fredrikstad,zeker,,,logos/8417.webp,1500:7671fbd0
+Sandefjord,8609,Sandefjord,norway/sandefjord,Sandefjord,zeker,,,logos/8609.webp,1500:b5942fa5
+Kristiansund,8605,Kristiansund,norway/kristiansund,Kristiansund,zeker,,,logos/8605.webp,1500:1c17aa07
+Aalesund,8404,Aalesund,norway/aalesund,Aalesund,zeker,,,logos/8404.webp,1500:1b3ff2f2
+Start,9919,Start,norway/start,IK Start,zeker,,,logos/9919.webp,1500:de18d06e

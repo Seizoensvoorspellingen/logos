@@ -1,11 +1,11 @@
-naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,logo,logo_versie
-NSÍ Runavík,8110,NSÍ Runavík,faroe-islands/nsi,NSÍ,nagekeken,,logos/8110.webp,700:65fb0566
-Klaksvik,8106,Klaksvik,faroe-islands/klaksvik,Klaksvík,zeker,,logos/8106.webp,700:dbfa4393
-HB Tórshavn,6652,HB Tórshavn,faroe-islands/hb,HB,nagekeken,,logos/6652.webp,700:c7b6cde6
-Víkingur,4666,Víkingur,faroe-islands/vikingur,Víkingur,zeker,,logos/4666.webp,700:4d67a6d1
-B36 Tórshavn,8002,B36 Tórshavn,faroe-islands/b36-torshavn,B36 Tórshavn,zeker,,logos/8002.webp,700:30ccb33c
-Skála,2228,Skála,faroe-islands/skala,Skála,zeker,,logos/2228.webp,700:dc4451ae
-AB Argir,59854,AB Argir,faroe-islands/ab,AB,nagekeken,,logos/59854.webp,700:bad28477
-EB/Streymur,2227,EB/Streymur,faroe-islands/eb-streymur,EB/Streymur,zeker,,logos/2227.webp,700:7b64d2c3
-07 Vestur,167964,07 Vestur,faroe-islands/07-vestur,07 Vestur,zeker,,logos/167964.webp,700:d4acae24
-B68 Toftir,6700,B68 Toftir,faroe-islands/b68,B68,nagekeken,,logos/6700.webp,700:3c5a8581
+naam,fotmob_id,fotmob_naam,football_logos,fl_naam,zekerheid,eigen_logo,eigen_pagina,logo,logo_versie
+NSÍ Runavík,8110,NSÍ Runavík,faroe-islands/nsi,NSÍ,nagekeken,,,logos/8110.webp,700:65fb0566
+Klaksvik,8106,Klaksvik,faroe-islands/klaksvik,Klaksvík,zeker,,,logos/8106.webp,700:dbfa4393
+HB Tórshavn,6652,HB Tórshavn,faroe-islands/hb,HB,nagekeken,,,logos/6652.webp,700:c7b6cde6
+Víkingur,4666,Víkingur,faroe-islands/vikingur,Víkingur,zeker,,,logos/4666.webp,700:4d67a6d1
+B36 Tórshavn,8002,B36 Tórshavn,faroe-islands/b36-torshavn,B36 Tórshavn,zeker,,,logos/8002.webp,700:30ccb33c
+Skála,2228,Skála,faroe-islands/skala,Skála,zeker,,,logos/2228.webp,700:dc4451ae
+AB Argir,59854,AB Argir,faroe-islands/ab,AB,nagekeken,,,logos/59854.webp,700:bad28477
+EB/Streymur,2227,EB/Streymur,faroe-islands/eb-streymur,EB/Streymur,zeker,,,logos/2227.webp,700:7b64d2c3
+07 Vestur,167964,07 Vestur,faroe-islands/07-vestur,07 Vestur,zeker,,,logos/167964.webp,700:d4acae24
+B68 Toftir,6700,B68 Toftir,faroe-islands/b68,B68,nagekeken,,,logos/6700.webp,700:3c5a8581

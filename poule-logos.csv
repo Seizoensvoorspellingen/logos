@@ -1,0 +1,18 @@
+sleutel,naam,football_logos,eigen_logo,eigen_pagina,logo,logo_versie
+knvb,KNVB,netherlands/knvb,,,logos/poule/knvb.webp,1500:8cb19552
+eredivisie,Eredivisie,netherlands/eredivisie,,,logos/poule/eredivisie.webp,1500:f3b81d0c
+eredivisie-schaal,Eredivisie (schaal),,https://upload.wikimedia.org/wikipedia/commons/6/6b/Landskampioen_Schaal.png,https://commons.wikimedia.org/wiki/File:Landskampioen_Schaal.png,logos/poule/eredivisie-schaal.webp,sha256:39e2dba935763819
+eredivisie-schaal-goud,Eredivisie (gouden schaal),,https://upload.wikimedia.org/wikipedia/commons/1/1d/Trofeo_Eredivisie.svg,https://commons.wikimedia.org/wiki/File:Trofeo_Eredivisie.svg,logos/poule/eredivisie-schaal-goud.webp,sha256:07367f4d2429e4a0
+nederlandse-vlag,Nederlandse vlag,,https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg,https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg,logos/poule/nederlandse-vlag.webp,sha256:9c2a624a9ca5a829
+knvb-beker,KNVB Beker,netherlands/knvb-cup,,,logos/poule/knvb-beker.webp,1500:f193b5c6
+knvb-beker-beker,KNVB Beker (beker),,https://upload.wikimedia.org/wikipedia/commons/d/d7/KNVB_Beker.svg,https://commons.wikimedia.org/wiki/File:KNVB_Beker.svg,logos/poule/knvb-beker-beker.webp,sha256:86b2ffbb8598ad4b
+uefa,UEFA,tournaments/uefa,,,logos/poule/uefa.webp,1500:5a1c5d0b
+champions-league,Champions League,tournaments/uefa-champions-league,,,logos/poule/champions-league.webp,1500:47d48d4e
+champions-league-beker,Champions League (beker),,https://upload.wikimedia.org/wikipedia/commons/8/8b/Coppa_Campioni.svg,https://commons.wikimedia.org/wiki/File:Coppa_Campioni.svg,logos/poule/champions-league-beker.webp,sha256:62171a7a8cd5ba9f
+champions-league-plain,Champions League (plain),tournaments/uefa-champions-league--no-text,,,logos/poule/champions-league-plain.webp,1500:9a5a2419
+europa-league,Europa League,tournaments/uefa-europa-league,,,logos/poule/europa-league.webp,1500:a5dfd022
+europa-league-beker,Europa League (beker),,https://upload.wikimedia.org/wikipedia/commons/9/9f/Coppauefa.png,https://commons.wikimedia.org/wiki/File:Coppauefa.png,logos/poule/europa-league-beker.webp,sha256:f8d230dc7637ee72
+europa-league-plain,Europa League (plain),tournaments/uefa-europa-league--no-text,,,logos/poule/europa-league-plain.webp,1500:dedbadd7
+conference-league,Conference League,tournaments/uefa-conference-league,,,logos/poule/conference-league.webp,1500:7fce1e15
+conference-league-beker,Conference League (beker),,https://upload.wikimedia.org/wikipedia/commons/8/8e/Trofeo_UEFA_Europa_Conference_League.svg,https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Europa_Conference_League.svg,logos/poule/conference-league-beker.webp,sha256:52b20f9d626585c3
+conference-league-plain,Conference League (plain),tournaments/uefa-conference-league--no-text,,,logos/poule/conference-league-plain.webp,1500:42b1dda2

@@ -56,6 +56,8 @@ details.comp{margin-left:22px;padding-left:12px;border-left:2px solid var(--line
 ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
 li{display:flex;gap:8px;align-items:center;background:var(--card);border-radius:8px;padding:6px}
 img{width:48px;height:48px;object-fit:contain;flex:none;background:#fff;border-radius:8px;padding:3px;box-sizing:border-box}.geen{width:48px;height:48px;display:grid;place-items:center;flex:none;border:1px dashed var(--muted);border-radius:50%;color:var(--muted)}
+li img{cursor:zoom-in}
+#groot{border:0;padding:0;background:transparent;max-width:none;max-height:none}#groot::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}#groot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}#groot img{width:min(384px,80vw);height:min(384px,80vw);background:#fff;border-radius:24px;padding:24px;cursor:zoom-out;animation:opkomen .18s ease-out}#groot figcaption{color:#fff;font-size:18px;font-weight:600;text-align:center}#groot button{position:fixed;top:12px;right:16px;font-size:28px;line-height:1;border:0;background:transparent;color:#fff;cursor:pointer}@keyframes opkomen{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
 li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!important}#niets{margin-top:16px}
 </style></head><body>
 <h1>Logobank Seizoensvoorspellingen</h1>
@@ -64,7 +66,10 @@ li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!importa
 <p id="niets" hidden>Geen clubs gevonden.</p>
 ${delen.join("\n")}
 ${pouleDeel}
+<dialog id="groot" aria-label="Logo vergroot"><button type="button" aria-label="Sluiten">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
 <script>
+const groot=document.getElementById("groot");
+document.addEventListener("click",e=>{const img=e.target.closest("li img");if(img){const li=img.closest("li");groot.querySelector("img").src=img.src;groot.querySelector("img").alt=li.querySelector("b").textContent;groot.querySelector("figcaption").textContent=li.querySelector("b").textContent;groot.showModal();return}if(groot.open&&(e.target===groot||e.target.closest("#groot img")||e.target.closest("#groot button")))groot.close()});
 const zoek=document.getElementById("zoek"),land=document.getElementById("land"),niets=document.getElementById("niets"),gekozenEl=document.getElementById("gekozen");
 const kaart=new Map([...document.querySelectorAll("#landlijst option")].map(o=>[o.value.toLowerCase(),{naam:o.value,map:o.dataset.map}]));const gekozen=new Map();
 function toonChips(){gekozenEl.innerHTML="";for(const [m,n] of gekozen){const c=document.createElement("span");c.className="chip";c.textContent=n;const b=document.createElement("button");b.type="button";b.textContent="×";b.setAttribute("aria-label",n+" weghalen");b.onclick=()=>{gekozen.delete(m);toonChips();filter()};c.append(b);gekozenEl.append(c)}}

@@ -14,20 +14,24 @@ const esc = (s) => String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
 const LANDNAAM = Object.fromEntries(Object.values(require("./landen.cjs")).map((l) => [l.nl.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-"), l.nl]));
 const titel = (s) => s.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 const vergelijk = (a, b) => a.localeCompare(b, "nl", { sensitivity: "base" });
+// Volgorde van de competities binnen een land: de hoogste divisie eerst, 'overige clubs' altijd onderaan.
+const VOLGORDE = { "eerste-divisie": 2, amateurclubs: 8, "overige-clubs": 9 };
+const compNaam = (bestand, land) => (bestand === "overige-clubs" ? `${land} overige clubs` : bestand === "amateurclubs" ? "Amateurclubs" : titel(bestand));
 
 const landen = fs.readdirSync(path.join(ROOT, "competities")).map((map) => ({ map, naam: LANDNAAM[map] || titel(map) })).sort((a, b) => vergelijk(a.naam, b.naam));
 let totaal = 0, metLogo = 0;
 const delen = landen.map(({ map, naam }) => {
-  const comps = fs.readdirSync(path.join(ROOT, "competities", map)).filter((f) => f.endsWith(".csv"));
-  return `<section data-land="${esc(map)}"><details open><summary><h2>${esc(naam)}</h2></summary>${comps.map((c) => {
+  const comps = fs.readdirSync(path.join(ROOT, "competities", map)).filter((f) => f.endsWith(".csv")).sort((a, b) => (VOLGORDE[a.replace(".csv", "")] || 1) - (VOLGORDE[b.replace(".csv", "")] || 1) || vergelijk(a, b));
+  return `<section data-land="${esc(map)}"><details open><summary><h2>${esc(naam)}</h2></summary>${comps.map((c, i) => {
     const rijen = leesCsv(path.join(ROOT, "competities", map, c)).sort((a, b) => vergelijk(a.naam, b.naam));
     totaal += rijen.length;
     metLogo += rijen.filter((r) => r.logo).length;
-    return `<div class="comp"><h3>${esc(titel(c.replace(".csv", "")))} <small>(${rijen.length})</small></h3><ul>${rijen.map((r) => {
-      const bron = r.eigen_logo ? `eigen logo van <a href="${esc(r.eigen_pagina || r.eigen_logo)}">${esc(new URL(r.eigen_pagina || r.eigen_logo).hostname.replace(/^www./, ""))}</a>` : r.football_logos ? `<a href="https://football-logos.cc/${esc(r.football_logos)}/">${esc(r.fl_naam || r.football_logos)}</a>` : "geen logo gevonden";
+    return `<details class="comp" data-standaard="${i === 0 ? 1 : 0}"${i === 0 ? " open" : ""}><summary><h3>${esc(compNaam(c.replace(".csv", ""), naam))} <small>(${rijen.length})</small></h3></summary><ul>${rijen.map((r) => {
+      const logoLink = r.eigen_logo ? r.eigen_pagina || r.eigen_logo : r.football_logos ? `https://football-logos.cc/${r.football_logos}/` : "";
+      const links = [/^[0-9]+$/.test(r.fotmob_id) ? `<a href="https://www.fotmob.com/teams/${esc(r.fotmob_id)}">FotMob</a>` : "", logoLink ? `<a href="${esc(logoLink)}">logo</a>` : "geen logo gevonden"].filter(Boolean).join(" · ");
       const zoek = [r.naam, r.fotmob_naam, r.fl_naam, naam].join(" ").toLowerCase();
-      return `<li data-zoek="${esc(zoek)}" data-koppeling="${esc(r.zekerheid)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>FotMob ${esc(r.fotmob_id)} · ${bron}</small></span></li>`;
-    }).join("")}</ul></div>`;
+      return `<li data-zoek="${esc(zoek)}" data-koppeling="${esc(r.zekerheid)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${links}</small></span></li>`;
+    }).join("")}</ul></details>`;
   }).join("")}</details></section>`;
 });
 
@@ -36,7 +40,7 @@ const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta n
 :root{color-scheme:light dark;--bg:#fff;--ink:#1a1a1a;--muted:#666;--line:#e3e3e3;--card:#f7f7f7}
 @media (prefers-color-scheme:dark){:root{--bg:#141414;--ink:#eee;--muted:#aaa;--line:#333;--card:#1e1e1e}}
 body{margin:0;padding:16px;font:15px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--ink);max-width:1100px;margin-inline:auto}
-h1{margin:0 0 4px}h2{margin:0;display:inline;font-size:1.4em}summary{margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px;cursor:pointer;list-style-position:outside}summary::marker{font-size:1.1em}h3{margin:14px 0 6px;font-size:15px}small{color:var(--muted)}
+h1{margin:0 0 4px}h2{margin:0;display:inline;font-size:1.4em}summary{margin:28px 0 4px;border-bottom:1px solid var(--line);padding-bottom:4px;cursor:pointer;list-style-position:outside}summary::marker{font-size:1.1em}h3{margin:0;display:inline;font-size:15px}details.comp>summary{margin:12px 0 6px;border:0;padding:0}small{color:var(--muted)}
 .balk{position:sticky;top:0;background:var(--bg);padding:10px 0;display:flex;gap:8px;flex-wrap:wrap;z-index:1;border-bottom:1px solid var(--line)}
 .landen{flex:1 1 260px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line);border-radius:8px;background:var(--card);padding:4px 6px}.landen input{border:0;flex:1 1 120px;padding:4px;background:transparent}.chip{display:inline-flex;gap:4px;align-items:center;background:var(--line);border-radius:999px;padding:2px 4px 2px 10px}.chip button{border:0;background:transparent;color:inherit;cursor:pointer;font:inherit;padding:0 6px}
 .balk input,.balk select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
@@ -58,7 +62,8 @@ function toonChips(){gekozenEl.innerHTML="";for(const [m,n] of gekozen){const c=
 function kies(){const k=kaart.get(land.value.trim().toLowerCase());if(k){gekozen.set(k.map,k.naam);land.value="";toonChips();filter()}}
 function filter(){const q=zoek.value.trim().toLowerCase();let n=0;
 for(const s of document.querySelectorAll("section")){let zs=0;
-for(const c of s.querySelectorAll(".comp")){let zc=0;for(const li of c.querySelectorAll("li")){const t=(!gekozen.size||gekozen.has(s.dataset.land))&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)zc++}c.hidden=!zc;zs+=zc}
+
+for(const c of s.querySelectorAll(".comp")){let zc=0;for(const li of c.querySelectorAll("li")){const t=(!gekozen.size||gekozen.has(s.dataset.land))&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)zc++}c.hidden=!zc;c.open=q?zc>0:c.dataset.standaard==="1";zs+=zc}
 s.hidden=!zs;n+=zs}niets.hidden=n>0}
 zoek.addEventListener("input",filter);land.addEventListener("input",kies);land.addEventListener("change",kies);land.addEventListener("keydown",e=>{if(e.key==="Backspace"&&!land.value&&gekozen.size){gekozen.delete([...gekozen.keys()].pop());toonChips();filter()}});
 </script>

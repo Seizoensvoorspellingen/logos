@@ -153,7 +153,7 @@ const kern = (s) => vlak(s).split(" ").filter((t) => t && !TOEVOEGING.has(t)).jo
       if (!u && deel === undefined) verslag.push(`${lijst}: geen UEFA-coëfficiënt en geen land gevonden voor ${t.naam}; onderaan gezet.`);
       return { id: t.id, naam: naamVan(t.id, t.naam, true), houder: t.id === houder, punten: u ? u.punten : deel !== undefined ? deel : -1, uefaPlek: u ? u.plek : 9999, uefaNaam: u ? u.displayName : "", landdeel: !u && deel !== undefined };
     }).sort((a, b) => (b.houder - a.houder) || b.punten - a.punten || a.landdeel - b.landdeel || a.uefaPlek - b.uefaPlek);
-    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `Winnaar ${TOERNOOI[lijst]} seizoen ${vor}` : r.landdeel ? `Geen eigen coëfficiëntenpunten. Daarom 20% land-coëfficiëntenpunten met ${getal(r.punten)} punten` : r.punten >= 0 ? `Plek ${r.uefaPlek} op de UEFA Coëfficiënten Ranglijst met ${getal(r.punten)} punten` : "Geen UEFA-coëfficiëntenpunten" })));
+    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `Winnaar ${TOERNOOI[lijst]} seizoen ${vor}` : r.landdeel ? `Geen eigen punten, dus 20% van het land: ${getal(r.punten)} punten` : r.punten >= 0 ? `Plek ${r.uefaPlek} op de UEFA Coëfficiënten Ranglijst met ${getal(r.punten)} punten` : "Geen UEFA-coëfficiëntenpunten" })));
   }
   fs.mkdirSync(path.join(ROOT, "tmp"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "tmp", "waardenlijsten-verslag.txt"), verslag.join("\n") + "\n");

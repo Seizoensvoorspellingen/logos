@@ -15,6 +15,7 @@ Clublogo's: [football-logos.cc](https://football-logos.cc/). De logo's zijn eige
   - `eigen_logo`: een eigen bestand of link; gaat voor op football-logos.cc
   - `logo`: het logo in deze logobank (`logos/<fotmob_id>.webp`)
 - `logos/<fotmob_id>.webp`: het logo, WebP bijna-lossless (kwaliteit 60) 384×384 px.
+- `logos/rond/<fotmob_id>.webp` en `logos/poule/rond/<sleutel>.webp`: hetzelfde logo, zo nodig kleiner gemaakt zodat het helemaal binnen een rondje past (de poule toont logo's in een wit rondje). Maken: `node tools/maak-rond.cjs` na `tools/maak-overzicht.cjs` (alleen wat nieuw of gewijzigd is; `--alles` maakt alles opnieuw).
 - `bron/<land>/<slug>.webp`: de bron, de PNG van 1500×1500 px van football-logos.cc, lossless als WebP bewaard.
 - `tools/`: de scripts (`koppel.cjs`: competities ophalen bij FotMob en koppelen; `haal-logos.cjs`: logo's ophalen en omzetten).
 

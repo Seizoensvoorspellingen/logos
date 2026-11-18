@@ -1,5 +1,6 @@
 // Waardenlijsten voor de poule: welke clubs in de keuzelijsten staan en in welke volgorde.
-// Schrijft waardenlijsten/<seizoen>/<lijst>.csv (kolommen: plek, naam, fotmob_id, reden, vast).
+// Schrijft waardenlijsten/<seizoen>/<nr>-<lijst>.csv (kolommen: plek, naam, reden, vast, fotmob_id).
+// fotmob_id koppelt de regel vast aan de club in de logobank (en dus aan het logo), ook als de naam later verandert.
 // Staat in een lijst bij minstens één regel vast=ja, dan blijft die lijst ongewijzigd.
 // Regels (Kalle, 17 november 2026):
 // - eredivisie: de clubs van dit seizoen; volgorde = eindstand vorig seizoen; promovendi onderaan, op hun eindstand in de Eerste divisie.
@@ -19,7 +20,9 @@ const ROOT = path.join(__dirname, "..");
 const UA = { "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36" };
 const COMP = { eredivisie: 57, eersteDivisie: 111, champions_league: 42, europa_league: 73, conference_league: 10216 };
 const EUROPA = { "champions-league": COMP.champions_league, "europa-league": COMP.europa_league, "conference-league": COMP.conference_league };
-const KOLOMMEN = ["plek", "naam", "fotmob_id", "reden", "vast"];
+const KOLOMMEN = ["plek", "naam", "reden", "vast", "fotmob_id"];
+// Bestandsnamen met een nummer, zodat GitHub en het overzicht ze in deze volgorde tonen.
+const BESTAND = { eredivisie: "1-eredivisie", "extra-punten": "2-extra-punten", "extra-punten-omgekeerd": "3-extra-punten-omgekeerd", "knvb-beker": "4-knvb-beker", "champions-league": "5-champions-league", "europa-league": "6-europa-league", "conference-league": "7-conference-league" };
 // Clubs die bij UEFA een andere naam hebben dan in de logobank: FotMob-id → UEFA-id.
 const UEFA_KOPPELING = { 7978: "64125", 8391: "52709", 480291: "2605905" };
 const wacht = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -103,7 +106,7 @@ const kern = (s) => vlak(s).split(" ").filter((t) => t && !TOEVOEGING.has(t)).jo
   };
   const schrijf = (lijst, rijen) => {
     if (alleen && !alleen.has(lijst)) return;
-    const bestand = path.join(map, lijst + ".csv");
+    const bestand = path.join(map, (BESTAND[lijst] || lijst) + ".csv");
     if (leesCsv(bestand).some((r) => r.vast === "ja")) { verslag.push(`${lijst}: vastgezet, niet bijgewerkt.`); return; }
     fs.writeFileSync(bestand, [KOLOMMEN.join(","), ...rijen.map((r, i) => KOLOMMEN.map((k) => csvVeld(k === "plek" ? i + 1 : r[k] || "")).join(","))].join("\n") + "\n");
     verslag.push(`${lijst}: ${rijen.length} clubs.`);
@@ -148,7 +151,7 @@ const kern = (s) => vlak(s).split(" ").filter((t) => t && !TOEVOEGING.has(t)).jo
       if (!u && deel === undefined) verslag.push(`${lijst}: geen UEFA-coëfficiënt en geen land gevonden voor ${t.naam}; onderaan gezet.`);
       return { id: t.id, naam: naamVan(t.id, t.naam, true), houder: t.id === houder, punten: u ? u.punten : deel !== undefined ? deel : -1, uefaPlek: u ? u.plek : 9999, uefaNaam: u ? u.displayName : "", landdeel: !u && deel !== undefined };
     }).sort((a, b) => (b.houder - a.houder) || b.punten - a.punten || a.landdeel - b.landdeel || a.uefaPlek - b.uefaPlek);
-    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `titelhouder ${vor}` : r.landdeel ? `geen eigen coëfficiënt; 20% van het land: ${r.punten}` : r.punten >= 0 ? `UEFA-coëfficiënt ${beginjaar}: ${r.punten} (${r.uefaNaam}, plek ${r.uefaPlek})` : "geen UEFA-coëfficiënt" })));
+    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `titelhouder ${vor}` : r.landdeel ? `geen eigen coëfficiënt; 20% van het land: ${r.punten}` : r.punten >= 0 ? `UEFA-coëfficiënt ${beginjaar}: ${r.punten} (plek ${r.uefaPlek})` : "geen UEFA-coëfficiënt" })));
   }
   fs.mkdirSync(path.join(ROOT, "tmp"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "tmp", "waardenlijsten-verslag.txt"), verslag.join("\n") + "\n");

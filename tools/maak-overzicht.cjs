@@ -42,6 +42,21 @@ const pouleDeel = pouleLogos.length ? `<section data-land="poule-logos"><details
   return `<li data-zoek="${esc((r.naam + " poule").toLowerCase())}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${bron ? `<a href="${esc(bron)}">logo</a>` : "nog geen logo"}</small></span></li>`;
 }).join("")}</ul><p><small>Via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Landskampioen_Schaal.png">schaal</a> (Forzaruvo94, CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Trofeo_Eredivisie.svg">gouden schaal</a>, <a href="https://commons.wikimedia.org/wiki/File:Coppa_Campioni.svg">Champions League-beker</a> en <a href="https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Europa_Conference_League.svg">Conference League-beker</a> (MacMoreno; CC BY-SA 4.0, publiek domein, CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Coppa_dei_Paesi_Bassi.svg">KNVB Beker</a> (MacMoreno, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg">vlag</a> (publiek domein). Europa League-beker: <a href="https://favpng.com/png_view/european-cup-uefa-europa-league-europe-tottenham-hotspur-fc-uefa-super-cup-201617-uefa-champions-league-png/KPAFZFUp">favpng.com</a> (achtergrond verwijderd). Overige logo's: football-logos.cc.</small></p></details></section>` : "";
 
+// Helemaal onderaan: de waardenlijsten van het nieuwste seizoen, elk apart uitklapbaar (standaard alles ingeklapt).
+const WL_TITEL = { "1-eredivisie": "Eredivisie", "2-extra-punten": "Extra punten", "3-extra-punten-omgekeerd": "Extra punten omgekeerd", "4-knvb-beker": "KNVB Beker", "5-champions-league": "Champions League", "6-europa-league": "Europa League", "7-conference-league": "Conference League" };
+const logoPerId = new Map();
+for (const land of fs.readdirSync(path.join(ROOT, "competities"))) for (const c of fs.readdirSync(path.join(ROOT, "competities", land)).filter((x) => x.endsWith(".csv"))) for (const r of leesCsv(path.join(ROOT, "competities", land, c))) if (r.logo) logoPerId.set(r.fotmob_id, r.logo);
+const wlMap = path.join(ROOT, "waardenlijsten");
+const wlSeizoen = fs.existsSync(wlMap) ? fs.readdirSync(wlMap).sort().pop() : null;
+const wlDeel = wlSeizoen ? `<section data-land="waardenlijsten"><details><summary><h2>Volgorde waardenlijsten clubs <small>(${esc(wlSeizoen.replace("-", "/"))})</small></h2></summary>${fs.readdirSync(path.join(wlMap, wlSeizoen)).filter((x) => x.endsWith(".csv")).sort().map((c) => {
+  const rijen = leesCsv(path.join(wlMap, wlSeizoen, c));
+  const sleutel = c.replace(".csv", "");
+  return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><ul>${rijen.map((r) => {
+    const logo = logoPerId.get(r.fotmob_id);
+    return `<li data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}">${logo ? `<img src="${esc(logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.plek)}. ${esc(r.naam)}</b><br><small>${esc(r.reden)}${r.vast === "ja" ? " · vastgezet" : ""}</small></span></li>`;
+  }).join("")}</ul></details>`;
+}).join("")}</details></section>` : "";
+
 const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logobank</title>
 <style>
 :root{color-scheme:light dark;--bg:#fff;--ink:#1a1a1a;--muted:#666;--line:#e3e3e3;--card:#f7f7f7}
@@ -66,6 +81,7 @@ li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!importa
 <p id="niets" hidden>Geen clubs gevonden.</p>
 ${delen.join("\n")}
 ${pouleDeel}
+${wlDeel}
 <dialog id="groot" aria-label="Logo vergroot"><button type="button" aria-label="Sluiten">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
 <script>
 const groot=document.getElementById("groot");

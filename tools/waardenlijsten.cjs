@@ -116,18 +116,22 @@ const kern = (s) => vlak(s).split(" ").filter((t) => t && !TOEVOEGING.has(t)).jo
   const vor = vorig(seizoen);
   const nu = await stand(COMP.eredivisie, seizoen);
   const eredivisieVorig = new Map((await stand(COMP.eredivisie, vor)).map((r) => [r.id, r.plek]));
-  const eersteVorig = new Map((await stand(COMP.eersteDivisie, vor)).map((r) => [r.id, r.plek]));
+  const eersteVorigLijst = await stand(COMP.eersteDivisie, vor);
+  const eersteVorig = new Map(eersteVorigLijst.map((r) => [r.id, r.plek]));
+  // Plek in de Eerste divisie zonder Jong-teams (die kunnen niet promoveren): 1 en 2 promoveren direct, de derde promovendus via de play-offs.
+  const rangZonderJong = new Map(eersteVorigLijst.filter((r) => !/^Jong /.test(r.naam)).sort((a, b) => a.plek - b.plek).map((r, i) => [r.id, i + 1]));
+  const promotie = (id) => { const p = rangZonderJong.get(id); return p === 1 ? "Gepromoveerd als winnaar KKD" : p === 2 ? "Gepromoveerd als 2e KKD" : "Gepromoveerd als winnaar Play-offs"; };
   const ere = nu.map((r) => ({ ...r, ev: eredivisieVorig.get(r.id), dv: eersteVorig.get(r.id) }))
     .sort((a, b) => (a.ev ? 0 : 1) - (b.ev ? 0 : 1) || (a.ev || 99) - (b.ev || 99) || (a.dv || 99) - (b.dv || 99))
-    .map((r) => ({ naam: naamVan(r.id, r.naam), fotmob_id: r.id, reden: r.ev ? `Eredivisie ${vor}: ${r.ev}` : r.dv ? `promovendus, Eerste divisie ${vor}: ${r.dv}` : "nieuw" }));
+    .map((r) => ({ naam: naamVan(r.id, r.naam), fotmob_id: r.id, reden: r.ev ? `Eindpositie seizoen ${vor}: ${r.ev}e` : r.dv ? promotie(r.id) : "Nieuw in de Eredivisie" }));
   schrijf("eredivisie", ere);
   schrijf("extra-punten", ere);
   schrijf("extra-punten-omgekeerd", [...ere].reverse());
   const eerste = (await stand(COMP.eersteDivisie, seizoen)).filter((r) => !/^Jong /.test(r.naam))
     .map((r) => ({ ...r, ev: eredivisieVorig.get(r.id), dv: eersteVorig.get(r.id) }))
     .sort((a, b) => (a.ev ? 0 : a.dv ? 1 : 2) - (b.ev ? 0 : b.dv ? 1 : 2) || (a.ev || 99) - (b.ev || 99) || (a.dv || 99) - (b.dv || 99))
-    .map((r) => ({ naam: naamVan(r.id, r.naam), fotmob_id: r.id, reden: r.ev ? `degradant, Eredivisie ${vor}: ${r.ev}` : r.dv ? `Eerste divisie ${vor}: ${r.dv}` : "nieuw in de Eerste divisie" }));
-  schrijf("knvb-beker", [...ere, ...eerste, { naam: "Amateurclub", fotmob_id: "amateurclub", reden: "vaste keuze onderaan" }]);
+    .map((r) => ({ naam: naamVan(r.id, r.naam), fotmob_id: r.id, reden: r.ev ? `Gedegradeerd (Eredivisie ${vor}: ${r.ev}e)` : r.dv ? `Eindpositie KKD ${vor}: ${r.dv}e` : "Nieuw in de KKD" }));
+  schrijf("knvb-beker", [...ere, ...eerste, { naam: "Amateurclub", fotmob_id: "amateurclub", reden: "Vaste keuze onderaan" }]);
 
   // Europese toernooien.
   const beginjaar = seizoen.split("/")[0];
@@ -151,7 +155,7 @@ const kern = (s) => vlak(s).split(" ").filter((t) => t && !TOEVOEGING.has(t)).jo
       if (!u && deel === undefined) verslag.push(`${lijst}: geen UEFA-coëfficiënt en geen land gevonden voor ${t.naam}; onderaan gezet.`);
       return { id: t.id, naam: naamVan(t.id, t.naam, true), houder: t.id === houder, punten: u ? u.punten : deel !== undefined ? deel : -1, uefaPlek: u ? u.plek : 9999, uefaNaam: u ? u.displayName : "", landdeel: !u && deel !== undefined };
     }).sort((a, b) => (b.houder - a.houder) || b.punten - a.punten || a.landdeel - b.landdeel || a.uefaPlek - b.uefaPlek);
-    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `titelhouder ${vor}` : r.landdeel ? `geen eigen coëfficiënt; 20% van het land: ${r.punten}` : r.punten >= 0 ? `UEFA-coëfficiënt ${beginjaar}: ${r.punten} (plek ${r.uefaPlek})` : "geen UEFA-coëfficiënt" })));
+    schrijf(lijst, rijen.map((r) => ({ naam: r.naam, fotmob_id: r.id, reden: r.houder ? `Titelhouder ${vor}` : r.landdeel ? `Geen eigen UEFA-coëfficiënt; 20% van het land: ${r.punten}` : r.punten >= 0 ? `UEFA-coëfficiënt ${beginjaar}: ${r.punten} (plek ${r.uefaPlek})` : "Geen UEFA-coëfficiënt" })));
   }
   fs.mkdirSync(path.join(ROOT, "tmp"), { recursive: true });
   fs.writeFileSync(path.join(ROOT, "tmp", "waardenlijsten-verslag.txt"), verslag.join("\n") + "\n");

@@ -51,10 +51,7 @@ const wlSeizoen = fs.existsSync(wlMap) ? fs.readdirSync(wlMap).sort().pop() : nu
 const wlDeel = wlSeizoen ? `<section data-land="waardenlijsten"><details><summary><h2>Volgorde waardenlijsten clubs <small>(${esc(wlSeizoen.replace("-", "/"))})</small></h2></summary>${fs.readdirSync(path.join(wlMap, wlSeizoen)).filter((x) => x.endsWith(".csv")).sort().map((c) => {
   const rijen = leesCsv(path.join(wlMap, wlSeizoen, c));
   const sleutel = c.replace(".csv", "");
-  return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><ul>${rijen.map((r) => {
-    const logo = logoPerId.get(r.fotmob_id);
-    return `<li data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}">${logo ? `<img src="${esc(logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.plek)}. ${esc(r.naam)}</b><br><small>${esc(r.reden)}${r.vast === "ja" ? " · vastgezet" : ""}</small></span></li>`;
-  }).join("")}</ul></details>`;
+  return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><table class="wl">${rijen.map((r) => `<tr data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}"><td>${esc(r.plek)}.</td><td>${esc(r.naam)}</td><td>(${esc(r.reden)})${r.vast === "ja" ? " · vastgezet" : ""}</td></tr>`).join("")}</table></details>`;
 }).join("")}</details></section>` : "";
 
 const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logobank</title>
@@ -73,6 +70,7 @@ li{display:flex;gap:8px;align-items:center;background:var(--card);border-radius:
 img{width:48px;height:48px;object-fit:contain;flex:none;background:#fff;border-radius:8px;padding:3px;box-sizing:border-box}.geen{width:48px;height:48px;display:grid;place-items:center;flex:none;border:1px dashed var(--muted);border-radius:50%;color:var(--muted)}
 li img{cursor:zoom-in}
 #groot{border:0;padding:0;background:transparent;max-width:none;max-height:none}#groot::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}#groot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}#groot img{width:min(384px,80vw);height:min(384px,80vw);background:#fff;border-radius:24px;padding:24px;cursor:zoom-out;animation:opkomen .18s ease-out}#groot figcaption{color:#fff;font-size:18px;font-weight:600;text-align:center}#groot button{position:fixed;top:12px;right:16px;font-size:28px;line-height:1;border:0;background:transparent;color:#fff;cursor:pointer}@keyframes opkomen{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+table.wl{border-collapse:collapse;margin:4px 0 8px}table.wl td{padding:3px 10px 3px 0;vertical-align:top}table.wl td:first-child{text-align:right;color:var(--muted);min-width:2.2em}table.wl td:last-child{color:var(--muted)}table.wl tr[hidden]{display:none}
 li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!important}#niets{margin-top:16px}
 </style></head><body>
 <h1>Logobank Seizoensvoorspellingen</h1>
@@ -94,7 +92,7 @@ function filter(){const q=zoek.value.trim().toLowerCase();let n=0;
 for(const s of document.querySelectorAll("section")){let zs=0;
 
 if(!s.querySelector(".comp")){let z=0;for(const li of s.querySelectorAll("li")){const t=!gekozen.size&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)z++}s.hidden=!z;n+=z;continue}
-for(const c of s.querySelectorAll(".comp")){let zc=0;for(const li of c.querySelectorAll("li")){const t=(!gekozen.size||gekozen.has(s.dataset.land))&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)zc++}c.hidden=!zc;c.open=q?zc>0:c.dataset.standaard==="1";zs+=zc}
+for(const c of s.querySelectorAll(".comp")){let zc=0;for(const li of c.querySelectorAll("li,tr[data-zoek]")){const t=(!gekozen.size||gekozen.has(s.dataset.land))&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)zc++}c.hidden=!zc;c.open=q?zc>0:c.dataset.standaard==="1";zs+=zc}
 s.hidden=!zs;n+=zs}niets.hidden=n>0}
 zoek.addEventListener("input",filter);land.addEventListener("input",kies);land.addEventListener("change",kies);land.addEventListener("keydown",e=>{if(e.key==="Backspace"&&!land.value&&gekozen.size){gekozen.delete([...gekozen.keys()].pop());toonChips();filter()}});
 </script>

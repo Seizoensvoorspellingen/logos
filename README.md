@@ -19,3 +19,7 @@ Clublogo's: [football-logos.cc](https://football-logos.cc/). De logo's zijn eige
 - `tools/`: de scripts (`koppel.cjs`: competities ophalen bij FotMob en koppelen; `haal-logos.cjs`: logo's ophalen en omzetten).
 
 Clubs worden nooit weggegooid. Een club die degradeert, gaat naar `competities/<land>/overige-clubs.csv`.
+
+## Waardenlijsten
+
+`waardenlijsten/<seizoen>/<lijst>.csv`: welke clubs in de keuzelijsten van de poule staan en in welke volgorde (kolommen: plek, naam, fotmob_id, reden, vast). Maken of bijwerken: `node tools/waardenlijsten.cjs --seizoen 2027/2028` (de Eredivisie, Extra punten en KNVB Beker zodra het nieuwe schema op FotMob staat; de Europese toernooien na de loting van de League Phase). Zet je in een lijst bij een regel `vast` op `ja`, dan blijft die lijst ongewijzigd. De regels staan bovenaan `tools/waardenlijsten.cjs`.

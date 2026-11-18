@@ -43,7 +43,7 @@ const pouleDeel = pouleLogos.length ? `<section data-land="poule-logos"><details
 }).join("")}</ul><p><small>Via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Landskampioen_Schaal.png">schaal</a> (Forzaruvo94, CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Trofeo_Eredivisie.svg">gouden schaal</a>, <a href="https://commons.wikimedia.org/wiki/File:Coppa_Campioni.svg">Champions League-beker</a> en <a href="https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Europa_Conference_League.svg">Conference League-beker</a> (MacMoreno; CC BY-SA 4.0, publiek domein, CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Coppa_dei_Paesi_Bassi.svg">KNVB Beker</a> (MacMoreno, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg">vlag</a> (publiek domein). Europa League-beker: <a href="https://favpng.com/png_view/european-cup-uefa-europa-league-europe-tottenham-hotspur-fc-uefa-super-cup-201617-uefa-champions-league-png/KPAFZFUp">favpng.com</a> (achtergrond verwijderd). Overige logo's: football-logos.cc.</small></p></details></section>` : "";
 
 // Helemaal onderaan: de waardenlijsten van het nieuwste seizoen, elk apart uitklapbaar (standaard alles ingeklapt).
-const WL_TITEL = { "1-eredivisie": "Eredivisie", "2-extra-punten": "Extra punten", "3-extra-punten-omgekeerd": "Extra punten omgekeerd", "4-knvb-beker": "KNVB Beker", "5-champions-league": "Champions League", "6-europa-league": "Europa League", "7-conference-league": "Conference League" };
+const WL_TITEL = { "1-eredivisie": "Eredivisie", "2-knvb-beker": "KNVB Beker", "3-champions-league": "Champions League", "4-europa-league": "Europa League", "5-conference-league": "Conference League" };
 const logoPerId = new Map();
 for (const land of fs.readdirSync(path.join(ROOT, "competities"))) for (const c of fs.readdirSync(path.join(ROOT, "competities", land)).filter((x) => x.endsWith(".csv"))) for (const r of leesCsv(path.join(ROOT, "competities", land, c))) if (r.logo) logoPerId.set(r.fotmob_id, r.logo);
 const wlMap = path.join(ROOT, "waardenlijsten");
@@ -51,7 +51,7 @@ const wlSeizoen = fs.existsSync(wlMap) ? fs.readdirSync(wlMap).sort().pop() : nu
 const wlDeel = wlSeizoen ? `<section data-land="waardenlijsten"><details><summary><h2>Volgorde waardenlijsten clubs <small>(${esc(wlSeizoen.replace("-", "/"))})</small></h2></summary>${fs.readdirSync(path.join(wlMap, wlSeizoen)).filter((x) => x.endsWith(".csv")).sort().map((c) => {
   const rijen = leesCsv(path.join(wlMap, wlSeizoen, c));
   const sleutel = c.replace(".csv", "");
-  return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><table class="wl">${rijen.map((r) => `<tr data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}"><td>${esc(r.plek)}.</td><td>${esc(r.naam)}</td><td>(${esc(r.reden)})${r.vast === "ja" ? " · vastgezet" : ""}</td></tr>`).join("")}</table></details>`;
+  return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><table class="wl">${rijen.map((r) => `<tr data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}"><td>${esc(r.plek)}.</td><td>${esc(r.naam)}</td><td>${esc(r.reden)}${r.vast === "ja" ? " · vastgezet" : ""}</td></tr>`).join("")}</table></details>`;
 }).join("")}</details></section>` : "";
 
 const html = `<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logobank</title>
@@ -70,7 +70,7 @@ li{display:flex;gap:8px;align-items:center;background:var(--card);border-radius:
 img{width:48px;height:48px;object-fit:contain;flex:none;background:#fff;border-radius:8px;padding:3px;box-sizing:border-box}.geen{width:48px;height:48px;display:grid;place-items:center;flex:none;border:1px dashed var(--muted);border-radius:50%;color:var(--muted)}
 li img{cursor:zoom-in}
 #groot{border:0;padding:0;background:transparent;max-width:none;max-height:none}#groot::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}#groot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}#groot img{width:min(384px,80vw);height:min(384px,80vw);background:#fff;border-radius:24px;padding:24px;cursor:zoom-out;animation:opkomen .18s ease-out}#groot figcaption{color:#fff;font-size:18px;font-weight:600;text-align:center}#groot button{position:fixed;top:12px;right:16px;font-size:28px;line-height:1;border:0;background:transparent;color:#fff;cursor:pointer}@keyframes opkomen{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
-table.wl{border-collapse:collapse;margin:4px 0 8px}table.wl td{padding:3px 10px 3px 0;vertical-align:top}table.wl td:first-child{text-align:right;color:var(--muted);min-width:2.2em}table.wl td:last-child{color:var(--muted)}table.wl tr[hidden]{display:none}
+table.wl{border-collapse:collapse;margin:4px 0 8px;table-layout:fixed}table.wl td:nth-child(2){width:var(--wl-naam,auto);white-space:nowrap}table.wl td{padding:3px 10px 3px 0;vertical-align:top}table.wl td:first-child{text-align:right;color:var(--muted);width:2.6em}table.wl td:last-child{color:var(--muted)}table.wl tr[hidden]{display:none}
 li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!important}#niets{margin-top:16px}
 </style></head><body>
 <h1>Logobank Seizoensvoorspellingen</h1>
@@ -82,6 +82,8 @@ ${pouleDeel}
 ${wlDeel}
 <dialog id="groot" aria-label="Logo vergroot"><button type="button" aria-label="Sluiten">×</button><figure><img alt=""><figcaption></figcaption></figure></dialog>
 <script>
+// Kolom met de clubnaam in alle waardenlijsten even breed: de breedte van de langste naam "Borac Banja Luka (Bosnië en Herzegovina)".
+{const m=document.createElement("span");m.style.cssText="position:absolute;visibility:hidden;white-space:nowrap;font:inherit";m.textContent="Borac Banja Luka (Bosnië en Herzegovina)";document.body.append(m);document.documentElement.style.setProperty("--wl-naam",Math.ceil(m.getBoundingClientRect().width)+"px");m.remove()}
 const groot=document.getElementById("groot");
 document.addEventListener("click",e=>{const img=e.target.closest("li img");if(img){const li=img.closest("li");groot.querySelector("img").src=img.src;groot.querySelector("img").alt=li.querySelector("b").textContent;groot.querySelector("figcaption").textContent=li.querySelector("b").textContent;groot.showModal();return}if(groot.open&&(e.target===groot||e.target.closest("#groot img")||e.target.closest("#groot button")))groot.close()});
 const zoek=document.getElementById("zoek"),land=document.getElementById("land"),niets=document.getElementById("niets"),gekozenEl=document.getElementById("gekozen");

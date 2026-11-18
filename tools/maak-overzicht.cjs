@@ -18,6 +18,10 @@ const vergelijk = (a, b) => a.localeCompare(b, "nl", { sensitivity: "base" });
 const VOLGORDE = { "eerste-divisie": 2, amateurclubs: 8, "overige-clubs": 9 };
 const compNaam = (bestand, land) => (bestand === "overige-clubs" ? `${land} overige clubs` : bestand === "amateurclubs" ? "Amateurclubs" : titel(bestand));
 
+// Groot bekijken: het bronbestand (tot 1500 px), zodat het logo ook vergroot scherp blijft. Bestaat het niet, dan het gewone logo.
+const bestaat = (p) => fs.existsSync(path.join(ROOT, p));
+const grootClub = (r) => { const p = r.eigen_logo ? `bron/eigen/${r.fotmob_id}.webp` : r.football_logos ? `bron/${r.football_logos.split("/")[0]}/${r.football_logos.split("/")[1]}.webp` : ""; return p && bestaat(p) ? p : r.logo; };
+const grootPoule = (r) => { const p = `bron/poule/${r.sleutel}.webp`; return bestaat(p) ? p : r.logo; };
 const landen = fs.readdirSync(path.join(ROOT, "competities")).map((map) => ({ map, naam: LANDNAAM[map] || titel(map) })).sort((a, b) => vergelijk(a.naam, b.naam));
 let totaal = 0, metLogo = 0;
 const delen = landen.map(({ map, naam }) => {
@@ -30,7 +34,7 @@ const delen = landen.map(({ map, naam }) => {
       const logoLink = r.eigen_logo ? r.eigen_pagina || r.eigen_logo : r.football_logos ? `https://football-logos.cc/${r.football_logos}/` : "";
       const links = [/^[0-9]+$/.test(r.fotmob_id) ? `<a href="https://www.fotmob.com/teams/${esc(r.fotmob_id)}">FotMob</a>` : "", logoLink ? `<a href="${esc(logoLink)}">logo</a>` : "geen logo gevonden"].filter(Boolean).join(" · ");
       const zoek = [r.naam, r.fotmob_naam, r.fl_naam, naam].join(" ").toLowerCase();
-      return `<li data-zoek="${esc(zoek)}" data-koppeling="${esc(r.zekerheid)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${links}</small></span></li>`;
+      return `<li data-zoek="${esc(zoek)}" data-koppeling="${esc(r.zekerheid)}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" data-groot="${esc(grootClub(r))}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${links}</small></span></li>`;
     }).join("")}</ul></details>`;
   }).join("")}</details></section>`;
 });
@@ -39,7 +43,7 @@ const delen = landen.map(({ map, naam }) => {
 const pouleLogos = fs.existsSync(path.join(ROOT, "poule-logos.csv")) ? leesCsv(path.join(ROOT, "poule-logos.csv")) : [];
 const pouleDeel = pouleLogos.length ? `<section data-land="poule-logos"><details><summary><h2>Poule logo's</h2></summary><ul class="poule">${pouleLogos.map((r) => {
   const bron = r.eigen_logo ? r.eigen_pagina || r.eigen_logo : r.football_logos ? `https://football-logos.cc/${r.football_logos.replace(/^tournaments[/]uefa$/, "uefa").replace(/--.*$/, "")}/` : "";
-  return `<li data-zoek="${esc((r.naam + " poule").toLowerCase())}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${bron ? `<a href="${esc(bron)}">logo</a>` : "nog geen logo"}</small></span></li>`;
+  return `<li data-zoek="${esc((r.naam + " poule").toLowerCase())}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" data-groot="${esc(grootPoule(r))}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${bron ? `<a href="${esc(bron)}">logo</a>` : "nog geen logo"}</small></span></li>`;
 }).join("")}</ul><p><small>Via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Landskampioen_Schaal.png">schaal</a> (Forzaruvo94, CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Trofeo_Eredivisie.svg">gouden schaal</a>, <a href="https://commons.wikimedia.org/wiki/File:Coppa_Campioni.svg">Champions League-beker</a> en <a href="https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Europa_Conference_League.svg">Conference League-beker</a> (MacMoreno; CC BY-SA 4.0, publiek domein, CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Coppa_dei_Paesi_Bassi.svg">KNVB Beker</a> (MacMoreno, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg">vlag</a> (publiek domein). Europa League-beker: <a href="https://favpng.com/png_view/european-cup-uefa-europa-league-europe-tottenham-hotspur-fc-uefa-super-cup-201617-uefa-champions-league-png/KPAFZFUp">favpng.com</a> (achtergrond verwijderd). Overige logo's: football-logos.cc.</small></p></details></section>` : "";
 
 // Helemaal onderaan: de waardenlijsten van het nieuwste seizoen, elk apart uitklapbaar (standaard alles ingeklapt).
@@ -69,7 +73,7 @@ ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(
 li{display:flex;gap:8px;align-items:center;background:var(--card);border-radius:8px;padding:6px}
 img{width:48px;height:48px;object-fit:contain;flex:none;background:#fff;border-radius:8px;padding:3px;box-sizing:border-box}.geen{width:48px;height:48px;display:grid;place-items:center;flex:none;border:1px dashed var(--muted);border-radius:50%;color:var(--muted)}
 li img{cursor:zoom-in}
-#groot{border:0;padding:0;background:transparent;max-width:none;max-height:none}#groot::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}#groot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}#groot img{width:min(384px,80vw);height:min(384px,80vw);background:#fff;border-radius:24px;padding:24px;cursor:zoom-out;animation:opkomen .18s ease-out}#groot figcaption{color:#fff;font-size:18px;font-weight:600;text-align:center}#groot button{position:fixed;top:12px;right:16px;font-size:28px;line-height:1;border:0;background:transparent;color:#fff;cursor:pointer}@keyframes opkomen{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+#groot{border:0;padding:0;background:transparent;max-width:none;max-height:none}#groot::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(2px)}#groot figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}#groot img{width:min(512px,85vw);height:min(512px,85vw);object-fit:contain;background:#fff;border-radius:24px;padding:24px;cursor:zoom-out;animation:opkomen .18s ease-out}#groot figcaption{color:#fff;font-size:18px;font-weight:600;text-align:center}#groot button{position:fixed;top:12px;right:16px;font-size:28px;line-height:1;border:0;background:transparent;color:#fff;cursor:pointer}@keyframes opkomen{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
 table.wl{border-collapse:collapse;margin:4px 0 8px;table-layout:fixed}table.wl td:nth-child(2){width:var(--wl-naam,auto);white-space:nowrap}table.wl td{padding:3px 10px 3px 0;vertical-align:top}table.wl td:first-child{text-align:right;color:var(--muted);width:2.6em}table.wl td:last-child{color:var(--muted)}table.wl tr[hidden]{display:none}
 li.leeg{outline:1px dashed #d08a00}a{color:inherit}[hidden]{display:none!important}#niets{margin-top:16px}
 </style></head><body>
@@ -85,7 +89,7 @@ ${wlDeel}
 // Kolom met de clubnaam in alle waardenlijsten even breed: de breedte van de langste naam "Borac Banja Luka (Bosnië en Herzegovina)".
 {const m=document.createElement("span");m.style.cssText="position:absolute;visibility:hidden;white-space:nowrap;font:inherit";m.textContent="Borac Banja Luka (Bosnië en Herzegovina)";document.body.append(m);document.documentElement.style.setProperty("--wl-naam",Math.ceil(m.getBoundingClientRect().width)+"px");m.remove()}
 const groot=document.getElementById("groot");
-document.addEventListener("click",e=>{const img=e.target.closest("li img");if(img){const li=img.closest("li");groot.querySelector("img").src=img.src;groot.querySelector("img").alt=li.querySelector("b").textContent;groot.querySelector("figcaption").textContent=li.querySelector("b").textContent;groot.showModal();return}if(groot.open&&(e.target===groot||e.target.closest("#groot img")||e.target.closest("#groot button")))groot.close()});
+document.addEventListener("click",e=>{const img=e.target.closest("li img");if(img){const li=img.closest("li");groot.querySelector("img").src=img.dataset.groot||img.src;groot.querySelector("img").alt=li.querySelector("b").textContent;groot.querySelector("figcaption").textContent=li.querySelector("b").textContent;groot.showModal();return}if(groot.open&&(e.target===groot||e.target.closest("#groot img")||e.target.closest("#groot button")))groot.close()});
 const zoek=document.getElementById("zoek"),land=document.getElementById("land"),niets=document.getElementById("niets"),gekozenEl=document.getElementById("gekozen");
 const kaart=new Map([...document.querySelectorAll("#landlijst option")].map(o=>[o.value.toLowerCase(),{naam:o.value,map:o.dataset.map}]));const gekozen=new Map();
 function toonChips(){gekozenEl.innerHTML="";for(const [m,n] of gekozen){const c=document.createElement("span");c.className="chip";c.textContent=n;const b=document.createElement("button");b.type="button";b.textContent="×";b.setAttribute("aria-label",n+" weghalen");b.onclick=()=>{gekozen.delete(m);toonChips();filter()};c.append(b);gekozenEl.append(c)}}

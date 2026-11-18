@@ -1,6 +1,6 @@
 // Logo's ophalen bij football-logos.cc voor alle clubs in competities/**.csv met een koppeling en nog zonder logo.
 // Per club: de PNG van 1500 px (grootste openbare maat; heeft de club die niet, dan de grootste die er is, minstens 384) → bron/<land>/<slug>.webp (lossless, zelfde pixels)
-// en logos/<fotmob_id>.webp (WebP lossless 384×384, lanczos3). Vult ook de kolom fl_naam (naam op football-logos.cc).
+// en logos/<fotmob_id>.webp (WebP bijna-lossless (kwaliteit 60) 384×384, lanczos3). Vult ook de kolom fl_naam (naam op football-logos.cc).
 // Gebruik: node tools/haal-logos.cjs [--opnieuw]
 const fs = require("fs");
 const path = require("path");
@@ -55,7 +55,7 @@ async function haal(url, soort) {
         const bron = path.join(ROOT, "bron", "eigen", r.fotmob_id + ".webp");
         fs.mkdirSync(path.dirname(bron), { recursive: true });
         await sharp(beeld, { limitInputPixels: false }).webp({ lossless: true, effort: 6 }).toFile(bron);
-        const logo = await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ lossless: true, effort: 6 }).toBuffer();
+        const logo = await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toBuffer();
         gegevens = { naam: "", logo };
         klaar.set(r.eigen_logo, gegevens);
       }
@@ -72,7 +72,7 @@ async function haal(url, soort) {
         const bron = path.join(ROOT, "bron", land, slug + ".webp");
         fs.mkdirSync(path.dirname(bron), { recursive: true });
         await sharp(png, { limitInputPixels: false }).webp({ lossless: true, effort: 6 }).toFile(bron);
-        const logo = await sharp(png, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ lossless: true, effort: 6 }).toBuffer();
+        const logo = await sharp(png, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toBuffer();
         gegevens = { naam: (naam || "").replace(/&amp;/g, "&").replace(/&#39;/g, "'"), logo };
         klaar.set(r.football_logos, gegevens);
       }

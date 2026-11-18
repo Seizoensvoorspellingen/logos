@@ -1,7 +1,7 @@
 // De logo's van de poule die geen club zijn (bond, competities, toernooien, bekers, vlag): poule-logos.csv.
 // Kolommen: sleutel, naam, football_logos (land/slug, ook varianten als 'tournaments/uefa-champions-league--no-text'),
 // eigen_logo (link naar een bestand of een pad in deze repo, gaat voor), eigen_pagina, logo, logo_versie.
-// Per logo: WebP lossless 384×384 in logos/poule/<sleutel>.webp, bron in bron/poule/<sleutel>.webp.
+// Per logo: WebP bijna-lossless (kwaliteit 60) 384×384 in logos/poule/<sleutel>.webp, bron in bron/poule/<sleutel>.webp.
 // Gebruik: node tools/haal-poule-logos.cjs [--opnieuw]
 const fs = require("fs");
 const path = require("path");
@@ -85,7 +85,7 @@ async function footballLogos(ref) {
     fs.mkdirSync(path.join(ROOT, "bron", "poule"), { recursive: true });
     fs.mkdirSync(path.dirname(uit), { recursive: true });
     await invoer().webp({ lossless: true, effort: 6 }).toFile(path.join(ROOT, "bron", "poule", r.sleutel + ".webp"));
-    await invoer().resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ lossless: true, effort: 6 }).toFile(uit);
+    await invoer().resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toFile(uit);
     r.logo = path.relative(ROOT, uit).replace(/\\/g, "/");
     r.logo_versie = bron.versie;
     nieuw++;

@@ -71,7 +71,7 @@ async function huidigeVersie(r) {
         const beeld = nu.beeld || (await haal(nu.url, "buffer"));
         if (!beeld) { verslag.mislukt.push(`${r.naam} (${sleutel})`); continue; }
         const uit = path.join(ROOT, "logos", r.fotmob_id + ".webp");
-        await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ lossless: true, effort: 6 }).toFile(uit);
+        await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toFile(uit);
         r.logo_versie = nu.versie;
         verslag.bijgewerkt.push(r.naam);
       }

@@ -14,7 +14,7 @@ Clublogo's: [football-logos.cc](https://football-logos.cc/). De logo's zijn eige
   - `zekerheid`: `zeker` (naam komt overeen), `nagekeken` (nagekeken door Claude), `handmatig` (zie `tools/correcties.json`) of `geen`
   - `eigen_logo`: een eigen bestand of link; gaat voor op football-logos.cc
   - `logo`: het logo in deze logobank (`logos/<fotmob_id>.webp`)
-- `logos/<fotmob_id>.webp`: het logo, WebP lossless 384×384 px.
+- `logos/<fotmob_id>.webp`: het logo, WebP bijna-lossless (kwaliteit 60) 384×384 px.
 - `bron/<land>/<slug>.webp`: de bron, de PNG van 1500×1500 px van football-logos.cc, lossless als WebP bewaard.
 - `tools/`: de scripts (`koppel.cjs`: competities ophalen bij FotMob en koppelen; `haal-logos.cjs`: logo's ophalen en omzetten).
 

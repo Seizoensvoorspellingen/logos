@@ -105,4 +105,10 @@ zoek.addEventListener("input",filter);land.addEventListener("input",kies);land.a
 </body></html>
 `;
 fs.writeFileSync(path.join(ROOT, "index.html"), html);
+// logos.json: per FotMob-code (clubs) en per sleutel (poule-logo's) het bronbestand onder bron/ voor het vergrote logo.
+// Het logo zelf is altijd logos/<code>.webp of logos/poule/<sleutel>.webp. Voor de poule (gele balk in Beheer, vergroten); telkens opnieuw gemaakt.
+const index = { bijgewerkt: new Date().toISOString().slice(0, 10), clubs: {}, poule: {} };
+for (const land of fs.readdirSync(path.join(ROOT, "competities"))) for (const c of fs.readdirSync(path.join(ROOT, "competities", land)).filter((x) => x.endsWith(".csv"))) for (const r of leesCsv(path.join(ROOT, "competities", land, c))) if (r.logo) index.clubs[r.fotmob_id] = grootClub(r).replace(/^bron[/]/, "");
+for (const r of pouleLogos) if (r.logo) index.poule[r.sleutel] = grootPoule(r).replace(/^bron[/]/, "");
+fs.writeFileSync(path.join(ROOT, "logos.json"), JSON.stringify(index));
 console.log("index.html:", totaal, "clubs,", metLogo, "met logo");

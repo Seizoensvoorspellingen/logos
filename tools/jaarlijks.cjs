@@ -72,6 +72,24 @@ function flClubs(html, land) {
   return [...clubs].map(([slug, naam]) => ({ slug, naam }));
 }
 
+// Tweede bron als football-logos.cc niets heeft: footylogos.com (rechten bij de clubs, vraagt bronvermelding 'FootyLogos').
+// Alleen bij een volledige naamovereenkomst, om geen verkeerd logo te koppelen. Geeft { logo, pagina } of null.
+let footySlugs = null;
+async function footylogos(naam) {
+  if (!footySlugs) {
+    const index = (await haal("https://www.footylogos.com/sitemap.xml", "tekst", UA_FL)) || "";
+    let alles = index;
+    for (const m of index.matchAll(/<loc>([^<]+[.]xml)<[/]loc>/g)) { alles += (await haal(m[1], "tekst", UA_FL)) || ""; await wacht(PAUZE_MS); }
+    footySlugs = [...new Set([...alles.matchAll(/footylogos[.]com[/]logos[/]([a-z0-9-]+)</g)].map((m) => m[1]).filter((x) => !/-(monochrome|white|black|gold|silver)$/.test(x)))];
+  }
+  const kandidaat = footySlugs.find((slug) => score(naam, slug.replace(/-/g, " ")) >= 0.99);
+  if (!kandidaat) return null;
+  const html = await haal(`https://www.footylogos.com/logos/${kandidaat}`, "tekst", UA_FL);
+  await wacht(PAUZE_MS);
+  const svg = html && (html.match(/https:[/][/]assets[.]footylogos[.]com[/]logos[/][a-z0-9-]+[/][a-z0-9-]+-logo-footylogos[.]svg/) || [])[0];
+  return svg ? { logo: svg, pagina: `https://www.footylogos.com/logos/${kandidaat}` } : null;
+}
+
 (async () => {
   const correcties = JSON.parse(fs.readFileSync(path.join(__dirname, "correcties.json"), "utf8"));
   // Alle bestaande regels, per fotmob_id, met hun huidige bestand.
@@ -141,7 +159,11 @@ function flClubs(html, land) {
         }
         if (beste && beste.s >= 0.5) { r.football_logos = `${land.fl}/${beste.slug}`; r.zekerheid = beste.s >= 0.99 ? "zeker" : "twijfel"; }
       }
-      if (!r.football_logos && !r.eigen_logo) verslag.zonderLogo.push(`${t.naam} (${land.nl})`);
+      if (!r.football_logos && !r.eigen_logo) {
+        const fy = await footylogos(t.naam);
+        if (fy) { r.eigen_logo = fy.logo; r.eigen_pagina = fy.pagina; r.zekerheid = "footylogos"; }
+        else verslag.zonderLogo.push(`${t.naam} (${land.nl})`);
+      }
       verslag.nieuw.push({ naam: t.naam, land: land.nl, koppeling: r.football_logos || r.eigen_logo || "geen", zekerheid: r.zekerheid });
       lijst.push(r);
     }

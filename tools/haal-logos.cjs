@@ -54,8 +54,10 @@ async function haal(url, soort) {
         if (!beeld) { verslag.mislukt.push(r.eigen_logo); continue; }
         const bron = path.join(ROOT, "bron", "eigen", r.fotmob_id + ".webp");
         fs.mkdirSync(path.dirname(bron), { recursive: true });
-        await sharp(beeld, { limitInputPixels: false }).webp({ lossless: true, effort: 6 }).toFile(bron);
-        const logo = await sharp(beeld, { limitInputPixels: false }).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toBuffer();
+        const svg = beeld.slice(0, 300).toString().includes("<svg");
+        const opties = { limitInputPixels: false, ...(svg ? { density: 200 } : {}) };
+        await sharp(beeld, opties).webp({ lossless: true, effort: 6 }).toFile(bron);
+        const logo = await sharp(beeld, opties).resize(MAAT, MAAT, { kernel: "lanczos3", fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ nearLossless: true, quality: 60, effort: 6 }).toBuffer();
         gegevens = { naam: "", logo };
         klaar.set(r.eigen_logo, gegevens);
       }

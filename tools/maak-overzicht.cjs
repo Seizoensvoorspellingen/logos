@@ -37,7 +37,7 @@ const delen = landen.map(({ map, naam }) => {
 
 // Onderaan: de logo's van de poule die geen club zijn (poule-logos.csv).
 const pouleLogos = fs.existsSync(path.join(ROOT, "poule-logos.csv")) ? leesCsv(path.join(ROOT, "poule-logos.csv")) : [];
-const pouleDeel = pouleLogos.length ? `<section data-land="poule-logos"><details open><summary><h2>Poule logo's</h2></summary><ul class="poule">${pouleLogos.map((r) => {
+const pouleDeel = pouleLogos.length ? `<section data-land="poule-logos"><details><summary><h2>Poule logo's</h2></summary><ul class="poule">${pouleLogos.map((r) => {
   const bron = r.eigen_logo ? r.eigen_pagina || r.eigen_logo : r.football_logos ? `https://football-logos.cc/${r.football_logos.replace(/^tournaments[/]uefa$/, "uefa").replace(/--.*$/, "")}/` : "";
   return `<li data-zoek="${esc((r.naam + " poule").toLowerCase())}" class="${r.logo ? "" : "leeg"}">${r.logo ? `<img src="${esc(r.logo)}" alt="" loading="lazy" width="48" height="48">` : `<span class="geen">?</span>`}<span><b>${esc(r.naam)}</b><br><small>${bron ? `<a href="${esc(bron)}">logo</a>` : "nog geen logo"}</small></span></li>`;
 }).join("")}</ul><p><small>Via Wikimedia Commons: <a href="https://commons.wikimedia.org/wiki/File:Landskampioen_Schaal.png">schaal</a> (Forzaruvo94, CC BY-SA 3.0), <a href="https://commons.wikimedia.org/wiki/File:Trofeo_Eredivisie.svg">gouden schaal</a>, <a href="https://commons.wikimedia.org/wiki/File:Coppa_Campioni.svg">Champions League-beker</a> en <a href="https://commons.wikimedia.org/wiki/File:Trofeo_UEFA_Europa_Conference_League.svg">Conference League-beker</a> (MacMoreno; CC BY-SA 4.0, publiek domein, CC BY 4.0), <a href="https://commons.wikimedia.org/wiki/File:Coppa_dei_Paesi_Bassi.svg">KNVB Beker</a> (MacMoreno, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg">vlag</a> (publiek domein). Europa League-beker: <a href="https://favpng.com/png_view/european-cup-uefa-europa-league-europe-tottenham-hotspur-fc-uefa-super-cup-201617-uefa-champions-league-png/KPAFZFUp">favpng.com</a> (achtergrond verwijderd). Overige logo's: football-logos.cc.</small></p></details></section>` : "";
@@ -48,7 +48,7 @@ const logoPerId = new Map();
 for (const land of fs.readdirSync(path.join(ROOT, "competities"))) for (const c of fs.readdirSync(path.join(ROOT, "competities", land)).filter((x) => x.endsWith(".csv"))) for (const r of leesCsv(path.join(ROOT, "competities", land, c))) if (r.logo) logoPerId.set(r.fotmob_id, r.logo);
 const wlMap = path.join(ROOT, "waardenlijsten");
 const wlSeizoen = fs.existsSync(wlMap) ? fs.readdirSync(wlMap).sort().pop() : null;
-const wlDeel = wlSeizoen ? `<section data-land="waardenlijsten"><details><summary><h2>Volgorde waardenlijsten clubs <small>(${esc(wlSeizoen.replace("-", "/"))})</small></h2></summary>${fs.readdirSync(path.join(wlMap, wlSeizoen)).filter((x) => x.endsWith(".csv")).sort().map((c) => {
+const wlDeel = wlSeizoen ? `<section data-land="waardenlijsten"><details data-dicht="1"><summary><h2>Volgorde waardenlijsten clubs <small>(${esc(wlSeizoen.replace("-", "/"))})</small></h2></summary>${fs.readdirSync(path.join(wlMap, wlSeizoen)).filter((x) => x.endsWith(".csv")).sort().map((c) => {
   const rijen = leesCsv(path.join(wlMap, wlSeizoen, c));
   const sleutel = c.replace(".csv", "");
   return `<details class="comp" data-standaard="0"><summary><h3>${esc(WL_TITEL[sleutel] || titel(sleutel))} <small>(${rijen.length})</small></h3></summary><table class="wl">${rijen.map((r) => `<tr data-zoek="${esc((r.naam + " " + (WL_TITEL[sleutel] || "")).toLowerCase())}"><td>${esc(r.plek)}.</td><td>${esc(r.naam)}</td><td>${esc(r.reden)}${r.vast === "ja" ? " · vastgezet" : ""}</td></tr>`).join("")}</table></details>`;
@@ -93,9 +93,9 @@ function kies(){const k=kaart.get(land.value.trim().toLowerCase());if(k){gekozen
 function filter(){const q=zoek.value.trim().toLowerCase();let n=0;
 for(const s of document.querySelectorAll("section")){let zs=0;
 
-if(!s.querySelector(".comp")){let z=0;for(const li of s.querySelectorAll("li")){const t=!gekozen.size&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)z++}s.hidden=!z;n+=z;continue}
+if(!s.querySelector(".comp")){let z=0;for(const li of s.querySelectorAll("li")){const t=!gekozen.size&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)z++}s.hidden=!z;s.querySelector(":scope>details").open=!!q&&z>0;n+=z;continue}
 for(const c of s.querySelectorAll(".comp")){let zc=0;for(const li of c.querySelectorAll("li,tr[data-zoek]")){const t=(!gekozen.size||gekozen.has(s.dataset.land))&&(!q||li.dataset.zoek.includes(q));li.hidden=!t;if(t)zc++}c.hidden=!zc;c.open=q?zc>0:c.dataset.standaard==="1";zs+=zc}
-s.hidden=!zs;n+=zs}niets.hidden=n>0}
+s.hidden=!zs;const buiten=s.querySelector(":scope>details");if(buiten.dataset.dicht)buiten.open=!!q&&zs>0;n+=zs}niets.hidden=n>0}
 zoek.addEventListener("input",filter);land.addEventListener("input",kies);land.addEventListener("change",kies);land.addEventListener("keydown",e=>{if(e.key==="Backspace"&&!land.value&&gekozen.size){gekozen.delete([...gekozen.keys()].pop());toonChips();filter()}});
 </script>
 </body></html>
